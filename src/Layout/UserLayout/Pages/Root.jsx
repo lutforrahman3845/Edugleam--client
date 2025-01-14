@@ -3,9 +3,9 @@ import Navbar from "../../Components/Navbar";
 import Footer from "../../Components/Footer";
 const Root = () => {
   return (
-    <div>
+    <div className="min-h-screen flex flex-col">
       <Navbar></Navbar>
-      <div className="container mx-auto min-h-[calc(100vh-73px)]">
+      <div className="container mx-auto flex-grow overflow-x-hidden">
         <Outlet></Outlet>
       </div>
       <Footer></Footer>

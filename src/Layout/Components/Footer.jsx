@@ -4,9 +4,9 @@ import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 const Footer = () => {
   return (
-    <div className="dark:bg-secondary dark:text-white text-gray-700 border-t dark:border-gray-700">
-      <footer className=" grid grid-cols-2 lg:grid-cols-6 gap-20  py-10 px-6 xl:px-10 container mx-auto">
-        <aside className="col-span-2">
+    <div className="dark:bg-secondary dark:text-white text-gray-700 border-t dark:border-gray-700 mt-10 sm:mt-16 md:mt-24 lg:mt-32">
+      <footer className=" grid grid-cols-1 lg:grid-cols-6 gap-20  py-10 px-6 xl:px-10 container mx-auto">
+        <div className="col-span-1 lg:col-span-2">
           <Link to="/">
             <img className="w-20" src={logo} alt="logo" />
             <p className="text-gray-900 dark:text-white font-bold text-xl md:text-2xl lg:text-3xl mt-2 font-poppins">
@@ -44,9 +44,9 @@ const Footer = () => {
               <FaYoutube />
             </a>
           </div>
-        </aside>
+        </div>
 
-        <div className="col-span-4 ">
+        <div className="col-span-1 lg:col-span-4 ">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 ">
             <div>
               <h3 className="text-lg font-semibold mb-4">Explore</h3>
