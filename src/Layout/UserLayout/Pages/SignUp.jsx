@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import googleIcon from "../../../assets/Google.png";
 import signUppageImage from "../../../assets/Education-bro.svg";
-import { GoogleAuthProvider } from "firebase/auth";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import useAuth from "../../../Hooks/useAuth";
@@ -10,16 +8,17 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import docTitle from "../../../Hooks/Title";
 import axios from "axios";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import GoogleLogin from "../../Components/GoogleLogin";
 
 const SignUp = () => {
   const axiosPublic = useAxiosPublic();
-  const { singUpUser, setUser, googleSignIn, profileUpDate } = useAuth();
+  const { singUpUser, setUser, profileUpDate } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [selectedImage, setSelectedImage] = useState(null);
-  const [photo, setPhoto] = useState("");
+  const [photo, setPhoto] = useState(null);
   const [accountcreating, setAccountcreating] = useState(false);
 
   const hangleSelectImage = (event) => {
@@ -33,21 +32,6 @@ const SignUp = () => {
     const name = form.name.value;
     const terms = form.terms.checked;
     setError("");
-
-    try {
-      const formData = new FormData();
-      formData.append("file", selectedImage);
-      formData.append("upload_preset", "ResigtrationUser");
-      setAccountcreating(true);
-      const res = await axios.post(
-        `https://api.cloudinary.com/v1_1/dyeotrpkd/image/upload`,
-        formData
-      );
-      setAccountcreating(false);
-      setPhoto(res.data);
-    } catch (error) {
-      return setError("Please select an image");
-    }
 
     if (name.trim() === "" || email.trim() === "" || password.trim() === "") {
       return Swal.fire({
@@ -72,54 +56,34 @@ const SignUp = () => {
       setError("You must agree to the terms and conditions");
       return;
     }
+    const formData = new FormData();
+    formData.append("file", selectedImage);
+    formData.append("upload_preset", "ResigtrationUser");
+    setAccountcreating(true);
 
-    const userInfo = {
-      name: name,
-      email: email,
-    };
+    try {
+      const { data } = await axios.post(
+        `https://api.cloudinary.com/v1_1/dyeotrpkd/image/upload`,
+        formData
+      );
+      const uploadedPhoto = data?.url;
 
-    axiosPublic
-      .post("/user", userInfo)
-      .then((res) => {
-        if (res.data.insertedId) {
-          singUpUser(email, password)
-            .then((result) => {
-              const usr = result.user;
-              profileUpDate({ displayName: name, photoURL: photo })
-                .then(() => {
-                  toast.success("Succsessfully sing up", {
-                    position: "top-right",
-                    autoClose: 1000,
-                    hideProgressBar: false,
-                    closeOnClick: false,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                  });
-                  setUser(usr);
-                  form.reset();
-                  navigate(location?.state ? location.state : "/");
-                })
-                .catch((error) => {
-                  setError(error.message);
-                });
-            })
-            .catch((error) => {
-              setError(error.message);
-            });
-        }
-      })
-      .catch((error) => setError(error.message));
-  };
+      // Create a new user
+      const result = await singUpUser(email, password);
+      const usr = result.user;
 
-  const googleProvider = new GoogleAuthProvider();
-  const handleGoogleRegister = () => {
-    googleSignIn(googleProvider)
-      .then((result) => {
-        const usr = result.user;
-        setUser(usr);
-        toast.success("Succsessfully sing up", {
+      // Upload user name and photoURL
+      await profileUpDate({ displayName: name, photoURL: uploadedPhoto });
+
+      const userInfo = {
+        name: name,
+        email: email,
+      };
+      const response = await axiosPublic.post("/user", userInfo);
+
+      if (response.data.insertedId) {
+        // Notify success and set user
+        toast.success("Successfully signed up", {
           position: "top-right",
           autoClose: 1000,
           hideProgressBar: false,
@@ -129,11 +93,16 @@ const SignUp = () => {
           progress: undefined,
           theme: "light",
         });
-        navigate(location?.state ? location?.state : "/");
-      })
-      .catch((error) => {
-        setError(error.message);
-      });
+
+        setUser(usr); // Set the user in context
+        form.reset();
+        navigate(location?.state ? location.state : "/");
+      }
+    } catch (error) {
+      setError(error.message || "Something went wrong");
+    } finally {
+      setAccountcreating(false);
+    }
   };
   docTitle("SignUp | EduGleam");
   return (
@@ -227,12 +196,12 @@ const SignUp = () => {
                     autoComplete="current-password"
                     className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-primary sm:text-sm/6 relative"
                   />
-                  <button
+                  <div
                     onClick={() => setShowPassword(!showPassword)}
                     className="p-[2px]   absolute top-[23%] right-4 z-50 rounded-sm"
                   >
-                    {showPassword ? <FaRegEye /> : <FaRegEyeSlash />}
-                  </button>
+                    {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
+                  </div>
                 </div>
 
                 <p className="label-text-alt text-red-500 mt-1 text-sm">
@@ -272,17 +241,7 @@ const SignUp = () => {
               </Link>
             </p>
           </div>
-          <div className="flex justify-center mt-4 mb-8">
-            <button
-              onClick={handleGoogleRegister}
-              className="flex items-center justify-center gap-2 py-2 px-3 border rounded-lg shadow-xl mt-5"
-            >
-              <span>
-                <img className="w-5" src={googleIcon} alt="google icon" />
-              </span>
-              Sing up with Google{" "}
-            </button>
-          </div>
+          <GoogleLogin setError={setError} />
         </div>
       </div>
     </div>

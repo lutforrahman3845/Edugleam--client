@@ -3,11 +3,17 @@ import { ThemeContext } from "../../Context/ThemeProvider";
 import logo from "../../assets/logo.svg";
 import { Link } from "react-router-dom";
 import useNavLinks from "../../Hooks/useNavLinks";
+import useAuth from "../../Hooks/useAuth";
+import userIcon from "../../assets/photo.png";
+import { toast } from "react-toastify";
+import { IoIosLogOut } from "react-icons/io";
+import { CgProfile } from "react-icons/cg";
 const Navbar = () => {
   const dropdownRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
   const { theme, toggleTheme } = useContext(ThemeContext);
   const { links } = useNavLinks();
+  const { user, singout } = useAuth();
 
   const toggleMenu = () => {
     setIsOpen((prev) => !prev);
@@ -109,20 +115,72 @@ const Navbar = () => {
               </svg>
             )}
           </button>
-          <div className="flex items-center gap-2 ">
-            <Link
-              to={"/signIn"}
-              className="bg-primary py-2 px-3 rounded-md text-base font-medium text-white"
-            >
-              Sign In
-            </Link>
-            <Link
-              to={"/signUp"}
-              className="hidden sm:block bg-primary py-2 px-3 rounded-md text-base font-medium text-white"
-            >
-              Sign Up
-            </Link>
-          </div>
+          {user && user?.email ? (
+            <div className="dropdown  dropdown-end">
+              {user?.photoURL ? (
+                <div tabIndex={1} role="button" className="w-10 h-10 ">
+                  <img
+                    className="w-full h-full object-cover rounded-full border border-primary"
+                    src={user?.photoURL}
+                    alt="User imge"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+              ) : (
+                <div tabIndex={1} role="button" className="w-10 h-10 ">
+                  <img
+                    className="w-full h-full rounded-full border border-primary p-[2px]"
+                    src={userIcon}
+                    alt="Default User Icon"
+                  />
+                </div>
+              )}
+              <div
+                tabIndex={1}
+                className="dropdown-content menu bg-base-100 dark:bg-secondary rounded-box z-50 w-52 py-6 px-3 space-y-3 shadow "
+              >
+                <div className="text-base text-gray-800 dark:text-white cursor-pointer rounded-lg font-semibold flex items-center gap-2">
+                <CgProfile className="text-xl" />
+                  <p>{user?.displayName}</p>
+                </div>
+                <div
+                  onClick={() =>
+                    singout().then(() => {
+                      toast.success("Succsessfully sign out", {
+                        position: "top-right",
+                        autoClose: 1000,
+                        hideProgressBar: false,
+                        closeOnClick: false,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                      });
+                    })
+                  }
+                  className="text-base text-gray-800 dark:text-white  rounded-lg cursor-pointer  font-semibold flex items-center gap-2"
+                >
+                  <IoIosLogOut className="text-xl" />
+                  <p>sign out</p>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="flex items-center gap-2 ">
+              <Link
+                to={"/signIn"}
+                className="bg-primary py-2 px-3 rounded-md text-base font-medium text-white"
+              >
+                Sign In
+              </Link>
+              <Link
+                to={"/signUp"}
+                className="hidden sm:block bg-primary py-2 px-3 rounded-md text-base font-medium text-white"
+              >
+                Sign Up
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>
