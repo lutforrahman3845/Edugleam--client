@@ -12,6 +12,14 @@ const useNavLinks = () => {
             </NavLink>
           </li>
           <li>
+            <NavLink to={"/about"} className={({isActive}) => `px-3 py-2 rounded-md font-roboto text-base font-medium hover:bg-none ${
+                isActive ? 'bg-blue-500 text-white ' : 'dark:text-white text-secondary hover:text-blue-900'
+            }`}>
+                
+                About Us
+            </NavLink>
+          </li>
+          <li>
             <NavLink to={"/scholarships"} className={({isActive}) => `px-3 py-2 rounded-md font-roboto text-base font-medium hover:bg-none ${
                 isActive ? 'bg-blue-500 text-white ' : 'dark:text-white text-secondary hover:text-blue-900 '
             }`}>

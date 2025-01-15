@@ -46,7 +46,7 @@ const Navbar = () => {
                 // Close Icon (X)
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
+                  className="h-7 w-7"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -62,7 +62,7 @@ const Navbar = () => {
                 // Hamburger Icon
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
+                  className="h-7 w-7"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -79,7 +79,7 @@ const Navbar = () => {
             {isOpen && (
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 z-50 bg-base-100 rounded-md w-52 p-2 gap-2"
+                className=" menu-sm dropdown-content mt-3 z-50 bg-base-100 rounded-md w-52 p-2 gap-2 space-y-3 py-6"
               >
                 {links}
               </ul>
@@ -93,7 +93,7 @@ const Navbar = () => {
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 gap-2">{links}</ul>
+          <ul className=" menu-horizontal px-1 gap-2">{links}</ul>
         </div>
         <div className="navbar-end flex gap-3">
           <button onClick={toggleTheme} className="">

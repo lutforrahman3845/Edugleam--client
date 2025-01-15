@@ -48,6 +48,10 @@ const SignUp = () => {
       setError("Must have a Lowercase letter in the password");
       return;
     }
+    if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+      setError("Must have a special character in the password");
+      return;
+    }
     if (password.length < 6) {
       setError("Length must be at least 6 character");
       return;
@@ -78,6 +82,7 @@ const SignUp = () => {
       const userInfo = {
         name: name,
         email: email,
+        photo: uploadedPhoto,
       };
       const response = await axiosPublic.post("/user", userInfo);
 
