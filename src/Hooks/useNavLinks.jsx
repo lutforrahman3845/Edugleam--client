@@ -52,7 +52,7 @@ const useNavLinks = () => {
       {user && role === "admin" && (
         <li>
           <NavLink
-            to={"/dashboard/adminHome"}
+            to={"/dashboard/home"}
             className={({ isActive }) =>
               `px-3 py-2 rounded-md font-roboto text-base font-medium hover:bg-none ${
                 isActive
@@ -68,7 +68,7 @@ const useNavLinks = () => {
       {user && role === "modarator" && (
         <li>
           <NavLink
-            to={"/dashboard/modaratorHome"}
+            to={"/dashboard/home"}
             className={({ isActive }) =>
               `px-3 py-2 rounded-md font-roboto text-base font-medium hover:bg-none ${
                 isActive
@@ -84,7 +84,7 @@ const useNavLinks = () => {
       {user && !role && (
         <li>
           <NavLink
-            to={"/dashboard/userHome"}
+            to={"/dashboard/home"}
             className={({ isActive }) =>
               `px-3 py-2 rounded-md font-roboto text-base font-medium hover:bg-none ${
                 isActive

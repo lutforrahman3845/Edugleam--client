@@ -6,11 +6,11 @@ const axiosSecure = axios.create({
   baseURL: import.meta.env.VITE_serverUrl,
 });
 const useAxiosSecure = () => {
-  const { sigout } = useAuth();
+  const { singout } = useAuth();
   const navigate = useNavigate();
   axiosSecure.interceptors.request.use(
     function (config) {
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem("access-token");
       config.headers.authorization = `Bearer ${token}`;
       return config;
     },
@@ -24,7 +24,7 @@ const useAxiosSecure = () => {
     },
     async (error) => {
       if (error.response.status === 401 || error.response.status === 403) {
-        await sigout();
+        await singout();
         navigate("/signIn");
       }
       return Promise.reject(error);

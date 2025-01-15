@@ -8,8 +8,8 @@ import {
 } from "react-icons/fa";
 import { ThemeContext } from "../../../Context/ThemeProvider";
 import logo from "../../../assets/logo.svg";
-import { Link } from "react-router-dom";
-import useDasNavLink from "../DashboardComponents/useDasNavLink";
+import { Link, Outlet } from "react-router-dom";
+import useDasNavLink from "../DasHooks/useDasNavLink";
 
 const RootDashboard = () => {
   const dasLink = useDasNavLink();
@@ -60,14 +60,16 @@ const RootDashboard = () => {
           </div>
 
           {/* Main Content */}
-          <div className="flex-1 p-6 "></div>
+          <div className="flex-1 px-3 py-6 ">
+            <Outlet/>
+          </div>
         </div>
         {/* side nabvar */}
         <div className="drawer-side border border-primary/30 no-scrollbar">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <div className="bg-base-300  dark:bg-secondary text-base-content min-h-full w-80 p-4">
             {/* Close Icon for Mobile/Tablet device */}
-            <div className="flex justify-between items-center ">
+            <div className="flex justify-between items-center mb-4">
               <div className="flex items-center gap-2">
                 <img src={logo} alt="logo" className="w-10" />
                 <h4 className="hidden sm:block text-xl font-poppins font-semibold text-primary dark:text-white">
@@ -88,7 +90,7 @@ const RootDashboard = () => {
               <li>
                 <Link
                   to={"/"}
-                  className="text-lg font-semibold dark:hover:text-secondary hover:bg-gray-300 rounded-lg p-2"
+                  className="px-3 py-2 rounded-md font-roboto text-base font-medium dark:hover:text-secondary hover:bg-gray-300 "
                 >
                   <div className="flex items-center gap-1">
                     <FaHome />
@@ -99,7 +101,7 @@ const RootDashboard = () => {
               <li>
                 <Link
                   to={"/scholarships"}
-                  className="text-lg font-semibold dark:hover:text-secondary hover:bg-gray-300 rounded-lg p-2"
+                  className="px-3 py-2 rounded-md font-roboto text-base font-medium dark:hover:text-secondary hover:bg-gray-300 "
                 >
                   <div className="flex items-center gap-1">
                     <FaGraduationCap />
@@ -110,7 +112,7 @@ const RootDashboard = () => {
               <li>
                 <Link
                   to={"/contact"}
-                  className="text-lg font-semibold dark:hover:text-secondary hover:bg-gray-300 rounded-lg p-2"
+                  className="px-3 py-2 rounded-md font-roboto text-base font-medium dark:hover:text-secondary hover:bg-gray-300 "
                 >
                   <div className="flex items-center gap-1">
                     <FaMailBulk />
