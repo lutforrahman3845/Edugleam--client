@@ -51,16 +51,16 @@ const Footer = () => {
             <div>
               <h3 className="text-lg font-semibold mb-4">Explore</h3>
               <div className=" flex flex-col gap-3">
-                <a className="text-base font-normal text-gray-700 dark:text-gray-400 hover:text-white">
+                <a className="text-base font-normal text-gray-700 dark:text-gray-400 cursor-pointer">
                   Scholarships
                 </a>
-                <a className="text-base font-normal text-gray-700 dark:text-gray-400 hover:text-white">
+                <a className="text-base font-normal text-gray-700 dark:text-gray-400 cursor-pointer">
                   Universities
                 </a>
-                <a className="text-base font-normal text-gray-700 dark:text-gray-400 hover:text-white">
+                <a className="text-base font-normal text-gray-700 dark:text-gray-400 cursor-pointer">
                   Blog
                 </a>
-                <a className="text-base font-normal text-gray-700 dark:text-gray-400 hover:text-white">
+                <a className="text-base font-normal text-gray-700 dark:text-gray-400 cursor-pointer">
                   Contact Us
                 </a>
               </div>
@@ -68,16 +68,16 @@ const Footer = () => {
             <div>
               <h3 className="text-lg font-semibold mb-4">Company</h3>
               <div className="flex flex-col gap-3">
-                <a className="text-base font-normal text-gray-700 dark:text-gray-400 hover:text-white">
+                <a className="text-base font-normal text-gray-700 dark:text-gray-400 cursor-pointer">
                   About Us
                 </a>
-                <a className="text-base font-normal text-gray-700 dark:text-gray-400 hover:text-white">
+                <a className="text-base font-normal text-gray-700 dark:text-gray-400 cursor-pointer">
                   FQA
                 </a>
-                <a className="text-base font-normal text-gray-700 dark:text-gray-400 hover:text-white">
+                <a className="text-base font-normal text-gray-700 dark:text-gray-400 cursor-pointer">
                   Press
                 </a>
-                <a className="text-base font-normal text-gray-700 dark:text-gray-400 hover:text-white">
+                <a className="text-base font-normal text-gray-700 dark:text-gray-400 cursor-pointer">
                   Careers
                 </a>
               </div>
@@ -85,13 +85,13 @@ const Footer = () => {
             <div>
               <h3 className="text-lg font-semibold mb-4">Support</h3>
               <div className=" flex flex-col gap-3">
-                <a className="text-base font-normal text-gray-700 dark:text-gray-400 hover:text-white">
+                <a className="text-base font-normal text-gray-700 dark:text-gray-400 cursor-pointer">
                   Contact Us
                 </a>
-                <a className="text-base font-normal text-gray-700 dark:text-gray-400 hover:text-white">
+                <a className="text-base font-normal text-gray-700 dark:text-gray-400 cursor-pointer">
                   Guides
                 </a>
-                <a className="text-base font-normal text-gray-700 dark:text-gray-400 hover:text-white">
+                <a className="text-base font-normal text-gray-700 dark:text-gray-400 cursor-pointer">
                   Documentation
                 </a>
               </div>
@@ -99,13 +99,13 @@ const Footer = () => {
             <div>
               <h3 className="text-lg font-semibold mb-4">Legal</h3>
               <div className="flex flex-col gap-3">
-                <a className="text-base font-normal text-gray-700 dark:text-gray-400 hover:text-white ">
+                <a className="text-base font-normal text-gray-700 dark:text-gray-400 cursor-pointer ">
                   Terms of Service
                 </a>
-                <a className="text-base font-normal text-gray-700 dark:text-gray-400 hover:text-white ">
+                <a className="text-base font-normal text-gray-700 dark:text-gray-400 cursor-pointer ">
                   Privacy Policy
                 </a>
-                <a className="text-base font-normal text-gray-700 dark:text-gray-400 hover:text-white ">
+                <a className="text-base font-normal text-gray-700 dark:text-gray-400 cursor-pointer ">
                   A License
                 </a>
               </div>

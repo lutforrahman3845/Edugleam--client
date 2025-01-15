@@ -8,6 +8,9 @@ import About from "../Layout/UserLayout/Pages/About";
 import Contact from "../Layout/UserLayout/Pages/Contact";
 import RootDashboard from "../Layout/Dashboard/DashboardPages/RootDashboard";
 import UserProfile from "../Layout/Dashboard/DashboardComponents/UserProfile";
+import PrivateRoute from "./PrivateRoute";
+import AdminModaratorRoute from "./AdminModaratorRoute";
+import AddScholarship from "../Layout/UserLayout/Pages/AddScholarship";
 
 const router = createBrowserRouter([
   {
@@ -45,7 +48,11 @@ const router = createBrowserRouter([
     children:[
       {
         path:"/dashboard/home",
-        element:<UserProfile/>
+        element:<PrivateRoute><UserProfile/></PrivateRoute>
+      },
+      {
+        path:"/dashboard/addScholarship",
+        element:<AdminModaratorRoute><AddScholarship></AddScholarship></AdminModaratorRoute>
       }
     ]
   }

@@ -1,7 +1,6 @@
 import React from "react";
 
 const Profile = ({ user }) => {
-  console.log(user);
   return (
     <section className="flex flex-col items-center py-12 ">
       <div className="max-w-lg w-full bg-white dark:bg-secondary shadow-md rounded-lg overflow-hidden">

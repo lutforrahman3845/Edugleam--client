@@ -3,6 +3,7 @@ import useAuth from "../../../Hooks/useAuth";
 import useRole from "../../../Hooks/useRole";
 import { FaRegCommentDots, FaRegUserCircle } from "react-icons/fa";
 import { TiDocumentText } from "react-icons/ti";
+import { IoAddCircleOutline } from "react-icons/io5";
 
 const useDasNavLink = () => {
   const { user } = useAuth();
@@ -22,7 +23,7 @@ const useDasNavLink = () => {
               }`
             }
           >
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-1 ">
               <FaRegUserCircle className="text-lg" />
               My Profile
             </div>
@@ -67,6 +68,15 @@ const useDasNavLink = () => {
           </NavLink>
         </li>
       )}
+
+
+
+
+
+
+
+
+
       {/* modarator */}
       {user && role === "modarator" && (
         <li>
@@ -87,6 +97,33 @@ const useDasNavLink = () => {
           </NavLink>
         </li>
       )}
+      {user && role === "modarator"&& (
+        <li>
+          <NavLink
+            to={"/dashboard/addScholarship"}
+            className={({ isActive }) =>
+              `px-3 py-2 rounded-md font-roboto text-base font-medium hover:bg-none ${
+                isActive
+                  ? "bg-blue-500 text-white hover:text-secondary dark:hover:text-white"
+                  : "dark:text-gray-400 text-secondary hover:text-blue-900 "
+              }`
+            }
+          >
+            <div className="flex items-center gap-1">
+              <IoAddCircleOutline className="text-xl" />
+              Add Scholarship
+            </div>
+          </NavLink>
+        </li>
+      )}
+
+
+
+
+
+
+
+
       {/* Admin */}
       {user && role === "admin" && (
         <li>
@@ -101,8 +138,27 @@ const useDasNavLink = () => {
             }
           >
             <div className="flex items-center gap-1">
-              <FaRegUserCircle className="text-lg" />
+              <FaRegUserCircle className="text-lg " />
               Admin Profile
+            </div>
+          </NavLink>
+        </li>
+      )}
+      {user && role === "admin"&& (
+        <li>
+          <NavLink
+            to={"/dashboard/addScholarship"}
+            className={({ isActive }) =>
+              `px-3 py-2 rounded-md font-roboto text-base font-medium hover:bg-none ${
+                isActive
+                  ? "bg-blue-500 text-white hover:text-secondary dark:hover:text-white"
+                  : "dark:text-gray-400 text-secondary hover:text-blue-900 "
+              }`
+            }
+          >
+            <div className="flex items-center gap-1">
+              <IoAddCircleOutline className="text-xl" />
+              Add Scholarship
             </div>
           </NavLink>
         </li>
