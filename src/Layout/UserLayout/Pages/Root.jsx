@@ -8,9 +8,9 @@ const Root = () => {
     window.scrollTo(0, 0);
   },[location])
   return (
-    <div className="min-h-screen flex flex-col">
+    <div >
       <Navbar></Navbar>
-      <div className="container mx-auto flex-grow overflow-x-hidden">
+      <div className="container mx-auto flex-grow overflow-x-hidden min-h-[calc(100vh-180px)]">
         <Outlet></Outlet>
       </div>
       <Footer></Footer>

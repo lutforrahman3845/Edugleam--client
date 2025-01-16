@@ -10,7 +10,7 @@ const TopScholarships = () => {
   const { data: scholarships = [], isLoading } = useQuery({
     queryKey: ["scholarships"],
     queryFn: async () => {
-      const { data } = await axiosPublic.get("/allScholarships");
+      const { data } = await axiosPublic.get("/topScholarships");
       return data;
     },
   });

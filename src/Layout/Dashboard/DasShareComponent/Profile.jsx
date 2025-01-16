@@ -1,5 +1,5 @@
-import AdminProfileInfoDetails from "./AdminProfileInfoDetails";
-import ModeratorProfileInfoDetails from "./ModeratorProfileInfoDetails";
+import AdminProfileInfoDetails from "./userProfilrInfoDetails";
+
 
 const Profile = ({ user }) => {
   return (

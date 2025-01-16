@@ -15,11 +15,11 @@ const ScholarshipCard = ({ scholarship = [] }) => {
   } = scholarship;
 
   return (
-    <div className="relative bg-white dark:bg-gray-900 shadow-lg p-6 rounded-xl border border-gray-200 dark:border-gray-700 backdrop-blur-lg bg-opacity-80 transition-all duration-100 hover:shadow-2xl hover:scale-[1.02] overflow-hidden group flex flex-col justify-between">
+    <div className="relative bg-white dark:bg-gray-900 shadow-lg p-6 rounded-xl border border-gray-200 dark:border-gray-700  hover:shadow-2xl hover:scale-[1.02] overflow-hidden group flex flex-col justify-between ">
       
       <div className="flex items-center gap-3 mb-5">
         {/* University Logo */}
-        <div className="w-12 h-12 rounded-full border border-pri bg-white flex items-center justify-center overflow-hidden shadow-md transition-all duration-100 group-hover:scale-105">
+        <div className="w-12 h-12 rounded-full border border-pri bg-white flex items-center justify-center overflow-hidden shadow-md group-hover:scale-105">
           <img
             src={universityLogo || "https://via.placeholder.com/150"}
             alt={universityName}
@@ -56,7 +56,7 @@ const ScholarshipCard = ({ scholarship = [] }) => {
       {/* View Details Button - Positioned at Bottom Right */}
       <div className="flex justify-end mt-5">
         <Link to={`/scholarship/${_id}`}>
-          <button className="py-2 px-4 rounded-lg text-white font-medium flex items-center justify-center gap-2 transition-all duration-100 bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 shadow-md hover:shadow-lg transform group-hover:scale-[1.02]">
+          <button className="py-2 px-4 rounded-lg text-white font-medium flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 shadow-md hover:shadow-lg transform group-hover:scale-[1.02]">
             View Details
             <IoIosArrowRoundForward className="text-2xl" />
           </button>

@@ -85,12 +85,12 @@ const Navbar = () => {
               </ul>
             )}
           </div>
-          <div className="flex gap-2 items-center">
+          <Link to={'/'} className="flex gap-2 items-center">
             <img className="w-10" src={logo} alt="logo" />
-            <a className="hidden sm:block text-xl font-poppins font-semibold dark:text-white">
+            <h4 className="hidden sm:block text-xl font-poppins font-semibold dark:text-white">
               EduGleam
-            </a>
-          </div>
+            </h4>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className=" menu-horizontal px-1 gap-2">{links}</ul>

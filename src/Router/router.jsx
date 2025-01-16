@@ -13,6 +13,7 @@ import AddScholarship from "../Layout/Dashboard/DashboardPages/AddScholarship";
 import AdminRoute from "./AdminRoute";
 import ManageAllUsers from "../Layout/Dashboard/DashboardPages/ManageAllUsers";
 import AdminModeratorRoute from "./AdminModaratorRoute";
+import AllScholarships from "../Layout/UserLayout/Pages/AllScholarships";
 
 const router = createBrowserRouter([
   {
@@ -40,7 +41,10 @@ const router = createBrowserRouter([
         path:"/contact",
         element:<Contact/>
 
-      },
+      },{
+        path:"/scholarships",
+        element:<AllScholarships/>
+      }
     ],
   },
   {

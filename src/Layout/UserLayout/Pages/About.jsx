@@ -18,7 +18,7 @@ const About = () => {
               className="w-full lg:w-1/2 relative"
             >
               <img
-                className=" w-full lg:w-11/12 h-[300px] rounded-md object-cover object-left"
+                className=" w-full lg:w-11/12 h-[300px] rounded-md object-cover object-left shadow-md"
                 src={aboutImage}
                 alt="Scholarship Image"
               />
