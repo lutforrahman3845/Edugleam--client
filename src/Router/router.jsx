@@ -9,10 +9,10 @@ import Contact from "../Layout/UserLayout/Pages/Contact";
 import RootDashboard from "../Layout/Dashboard/DashboardPages/RootDashboard";
 import UserProfile from "../Layout/Dashboard/DashboardComponents/UserProfile";
 import PrivateRoute from "./PrivateRoute";
-import AdminModeratorRoute from "./AdminModeratorRoute";
 import AddScholarship from "../Layout/Dashboard/DashboardPages/AddScholarship";
 import AdminRoute from "./AdminRoute";
 import ManageAllUsers from "../Layout/Dashboard/DashboardPages/ManageAllUsers";
+import AdminModeratorRoute from "./AdminModaratorRoute";
 
 const router = createBrowserRouter([
   {
