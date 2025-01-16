@@ -3,29 +3,80 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import docTitle from "../../../Hooks/Title";
 import Loading from "../../Components/Loading";
 import { RiDeleteBin5Line } from "react-icons/ri";
+import { toast } from "react-toastify";
+import { useState } from "react";
 
 const ManageAllUsers = () => {
   const axiosSecure = useAxiosSecure();
-  const { data: users, isLoading: usersLoading } = useQuery({
-    queryKey: ["users"],
+  const [sort, setSort] = useState("");
+  const {
+    data: users,
+    isLoading: usersLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ["users", sort],
     queryFn: async () => {
-      const { data } = await axiosSecure.get("/users");
+      const { data } = await axiosSecure.get(`/users?role=${sort}`);
       return data;
     },
   });
-  const handleRoleChange = async (id, role) => {
+  const handleRoleChange = async (id, newrole) => {
     try {
-    } catch (errro) {}
+      const { data } = await axiosSecure.patch(`/users/${id}`, {
+        role: newrole,
+      });
+      if (data.modifiedCount > 0) {
+        toast.success("User role update succsessfully", {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+        refetch();
+      }
+    } catch (errro) {
+      toast.error(`${errro.message}`, {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
   };
   docTitle("Manage user | Dashboard");
   if (usersLoading) return <Loading></Loading>;
   return (
     <div className=" bg-white dark:bg-secondary">
-      <h1 className="text-lg md:text-2xl font-semibold text-center font-poppins ">
+      <h1 className="text-lg md:text-2xl font-semibold text-center pt-6 font-poppins ">
         {" "}
         All users
       </h1>
-      <div className="overflow-x-auto">
+      <div className="pb-6 flex items-center justify-end">
+        <select
+          onChange={(e) => {
+            setSort(e.target.value);
+            // setCurrentPage(1);
+          }}
+          value={sort}
+          name="sort"
+          id="sort"
+          className="border-2 border-primary focus:outline-primary p-2 mr-4 rounded-md dark:bg-secondary"
+        >
+          <option value="all users">Sort By role</option>
+          <option value="">User</option>
+          <option value="moderator">Moderator</option>
+          <option value="admin">Admin</option>
+        </select>
+      </div>
+      <div className="overflow-x-auto pb-4">
         <table className="table">
           {/* head */}
           <thead>
@@ -37,6 +88,7 @@ const ManageAllUsers = () => {
               <th>Action</th>
             </tr>
           </thead>
+          {/* body */}
           <tbody>
             {users &&
               users.map((user, index) => (
@@ -69,7 +121,7 @@ const ManageAllUsers = () => {
                       onChange={(e) =>
                         handleRoleChange(user?._id, e.target.value)
                       }
-                      className="p-1 border rounded bg-white dark:bg-gray-700"
+                      className="p-1 border rounded bg-white dark:bg-secondary"
                     >
                       <option value="">User</option>
                       <option value="moderator">Moderator</option>
