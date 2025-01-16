@@ -18,7 +18,7 @@ const Profile = ({ user }) => {
             </span>
           ) : (
             <div>
-              {user?.role === "modarator" && (
+              {user?.role === "moderator" && (
                 <span className="mt-3 inline-block bg-secondary text-white text-xs font-semibold px-3 py-1 rounded-full">
                   {user?.role}
                 </span>

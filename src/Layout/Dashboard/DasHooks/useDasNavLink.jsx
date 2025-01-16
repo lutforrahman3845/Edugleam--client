@@ -4,6 +4,7 @@ import useRole from "../../../Hooks/useRole";
 import { FaRegCommentDots, FaRegUserCircle } from "react-icons/fa";
 import { TiDocumentText } from "react-icons/ti";
 import { IoAddCircleOutline } from "react-icons/io5";
+import { MdManageAccounts } from "react-icons/md";
 
 const useDasNavLink = () => {
   const { user } = useAuth();
@@ -77,8 +78,8 @@ const useDasNavLink = () => {
 
 
 
-      {/* modarator */}
-      {user && role === "modarator" && (
+      {/* moderator */}
+      {user && role === "moderator" && (
         <li>
           <NavLink
             to={"/dashboard/home"}
@@ -97,7 +98,7 @@ const useDasNavLink = () => {
           </NavLink>
         </li>
       )}
-      {user && role === "modarator"&& (
+      {user && role === "moderator"&& (
         <li>
           <NavLink
             to={"/dashboard/addScholarship"}
@@ -159,6 +160,25 @@ const useDasNavLink = () => {
             <div className="flex items-center gap-1">
               <IoAddCircleOutline className="text-xl" />
               Add Scholarship
+            </div>
+          </NavLink>
+        </li>
+      )}
+      {user && role === "admin"&& (
+        <li>
+          <NavLink
+            to={"/dashboard/manageUsers"}
+            className={({ isActive }) =>
+              `px-3 py-2 rounded-md font-roboto text-base font-medium hover:bg-none ${
+                isActive
+                  ? "bg-blue-500 text-white hover:text-secondary dark:hover:text-white"
+                  : "dark:text-gray-400 text-secondary hover:text-blue-900 "
+              }`
+            }
+          >
+            <div className="flex items-center gap-1">
+              <MdManageAccounts className="text-xl" />
+              Manage Users
             </div>
           </NavLink>
         </li>

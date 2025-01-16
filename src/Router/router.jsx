@@ -9,8 +9,10 @@ import Contact from "../Layout/UserLayout/Pages/Contact";
 import RootDashboard from "../Layout/Dashboard/DashboardPages/RootDashboard";
 import UserProfile from "../Layout/Dashboard/DashboardComponents/UserProfile";
 import PrivateRoute from "./PrivateRoute";
-import AdminModaratorRoute from "./AdminModaratorRoute";
-import AddScholarship from "../Layout/UserLayout/Pages/AddScholarship";
+import AdminModeratorRoute from "./AdminModeratorRoute";
+import AddScholarship from "../Layout/Dashboard/DashboardPages/AddScholarship";
+import AdminRoute from "./AdminRoute";
+import ManageAllUsers from "../Layout/Dashboard/DashboardPages/ManageAllUsers";
 
 const router = createBrowserRouter([
   {
@@ -48,11 +50,15 @@ const router = createBrowserRouter([
     children:[
       {
         path:"/dashboard/home",
-        element:<PrivateRoute><UserProfile/></PrivateRoute>
+        element:<PrivateRoute><UserProfile></UserProfile></PrivateRoute>
       },
       {
         path:"/dashboard/addScholarship",
-        element:<AdminModaratorRoute><AddScholarship></AddScholarship></AdminModaratorRoute>
+        element:<AdminModeratorRoute><AddScholarship></AddScholarship></AdminModeratorRoute>
+      },
+      {
+        path:"/dashboard/manageUsers",
+        element:<AdminRoute><ManageAllUsers></ManageAllUsers></AdminRoute>
       }
     ]
   }

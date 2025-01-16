@@ -10,7 +10,6 @@ import { ThemeContext } from "../../../Context/ThemeProvider";
 import logo from "../../../assets/logo.svg";
 import { Link, Outlet } from "react-router-dom";
 import useDasNavLink from "../DasHooks/useDasNavLink";
-import docTitle from "../../../Hooks/Title";
 
 const RootDashboard = () => {
   const dasLink = useDasNavLink();
@@ -18,7 +17,6 @@ const RootDashboard = () => {
   const handleCloseSidebar = () => {
     document.getElementById("my-drawer-2").checked = false;
   };
-  docTitle("Profile | Dashboard")
   return (
     <div className="container mx-auto">
       <div className="drawer lg:drawer-open">

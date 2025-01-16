@@ -65,7 +65,7 @@ const useNavLinks = () => {
           </NavLink>
         </li>
       )}
-      {user && role === "modarator" && (
+      {user && role === "moderator" && (
         <li>
           <NavLink
             to={"/dashboard/home"}
