@@ -5,10 +5,14 @@ import Loading from "../../Components/Loading";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { toast } from "react-toastify";
 import { useState } from "react";
+import Swal from "sweetalert2";
+import useAuth from "../../../Hooks/useAuth";
 
 const ManageAllUsers = () => {
   const axiosSecure = useAxiosSecure();
-  const [sort, setSort] = useState("");
+  const { user: loginUserEmail } = useAuth();
+  const [sort, setSort] = useState("all users");
+  //   fetch users
   const {
     data: users,
     isLoading: usersLoading,
@@ -20,7 +24,21 @@ const ManageAllUsers = () => {
       return data;
     },
   });
-  const handleRoleChange = async (id, newrole) => {
+  //   change role
+  const handleRoleChange = async (id, newrole, email) => {
+    if (email === loginUserEmail?.email) {
+      return toast.error("You are the admin . You cannot change your role ! If you want your changes, talk to another admin ", {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+
     try {
       const { data } = await axiosSecure.patch(`/users/${id}`, {
         role: newrole,
@@ -50,6 +68,56 @@ const ManageAllUsers = () => {
         theme: "light",
       });
     }
+  };
+  //   delete user
+  const handleDeleteUser = (id, email) => {
+    if (email === loginUserEmail?.email) {
+      return toast.error("You cannot delete your own account", {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const { data } = await axiosSecure.delete(`/delete/user/${id}`);
+          if (data.deletedCount > 0) {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            });
+            refetch();
+          }
+        } catch (error) {
+          toast.error(`${error.message}`, {
+            position: "top-right",
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+        }
+      }
+    });
   };
   docTitle("Manage user | Dashboard");
   if (usersLoading) return <Loading></Loading>;
@@ -119,7 +187,7 @@ const ManageAllUsers = () => {
                     <select
                       value={`${user?.role ? user?.role : "user"}`}
                       onChange={(e) =>
-                        handleRoleChange(user?._id, e.target.value)
+                        handleRoleChange(user?._id, e.target.value, user?.email)
                       }
                       className="p-1 border rounded bg-white dark:bg-secondary"
                     >
@@ -129,7 +197,10 @@ const ManageAllUsers = () => {
                     </select>
                   </td>
                   <th>
-                    <button className="btn btn-ghost btn-xs">
+                    <button
+                      onClick={() => handleDeleteUser(user?._id, user?.email)}
+                      className="btn btn-ghost btn-xs"
+                    >
                       <RiDeleteBin5Line className="text-xl text-red-700" />
                     </button>
                   </th>
