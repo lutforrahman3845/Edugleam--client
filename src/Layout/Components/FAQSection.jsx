@@ -2,7 +2,7 @@ const FAQSection = () => {
   return (
     <section className=" pt-16 font-roboto">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-6 text-primary font-poppins">
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-4 text-primary font-poppins">
           Frequently Asked Questions
         </h2>
         <p className="text-center text-gray-600 dark:text-white mb-8">
@@ -12,7 +12,7 @@ const FAQSection = () => {
         <div className="max-w-7xl mx-auto space-y-2">
           <div className="collapse bg-base-200">
             <input type="radio" name="my-accordion-1" defaultChecked />
-            <div className="collapse-title text-xl font-medium font-poppins">
+            <div className="collapse-title text-lg lg:text-xl font-medium font-poppins">
               What is a scholarship?
             </div>
             <div className="collapse-content">
@@ -25,7 +25,7 @@ const FAQSection = () => {
           </div>
           <div className="collapse bg-base-200">
             <input type="radio" name="my-accordion-1" defaultChecked />
-            <div className="collapse-title text-xl font-medium font-poppins">
+            <div className="collapse-title text-lg lg:text-xl font-medium font-poppins">
               How can I apply for scholarships?
             </div>
             <div className="collapse-content">
@@ -39,7 +39,7 @@ const FAQSection = () => {
           </div>
           <div className="collapse bg-base-200">
             <input type="radio" name="my-accordion-1" defaultChecked />
-            <div className="collapse-title text-xl font-medium font-poppins">
+            <div className="collapse-title text-lg lg:text-xl font-medium font-poppins">
               Are scholarships only for college students?
             </div>
             <div className="collapse-content">
@@ -52,7 +52,7 @@ const FAQSection = () => {
           </div>
           <div className="collapse bg-base-200">
             <input type="radio" name="my-accordion-1" defaultChecked />
-            <div className="collapse-title text-xl font-medium font-poppins">
+            <div className="collapse-title text-lg lg:text-xl font-medium font-poppins">
               Do I need to repay a scholarship?
             </div>
             <div className="collapse-content">
@@ -65,7 +65,7 @@ const FAQSection = () => {
           </div>
           <div className="collapse bg-base-200">
             <input type="radio" name="my-accordion-1" defaultChecked />
-            <div className="collapse-title text-xl font-medium font-poppins">
+            <div className="collapse-title text-lg lg:text-xl font-medium font-poppins">
               Can international students apply for scholarships?
             </div>
             <div className="collapse-content">

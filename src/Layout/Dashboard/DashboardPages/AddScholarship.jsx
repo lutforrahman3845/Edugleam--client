@@ -38,10 +38,10 @@ const AddScholarship = () => {
       data.universityLogo = imageUrl;
       data.applicationDeadline = new Date(
         applicationDeadline
-      ).toLocaleDateString();
+      )
       data.scholarshipPostDate = new Date(
         scholarshipPostDate
-      ).toLocaleDateString();
+      )
 
       await axiosSecure.post("/scholarships", data)
       .then((res) => {

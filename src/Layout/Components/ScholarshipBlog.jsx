@@ -29,10 +29,10 @@ const ScholarshipBlog = () => {
     return (
       <section className="mt-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-6 text-primary font-poppins">
+          <h2 className=" text-xl sm:text-2xl md:text-3xl font-bold text-center mb-4 text-primary font-poppins">
             Scholarship Blog & Tips
           </h2>
-          <p className="text-center text-gray-600 dark:text-white mb-8 font-roboto">
+          <p className="text-center text-gray-600 dark:text-white mb-6 font-roboto">
             Stay updated with the latest scholarship opportunities and expert advice!
           </p>
   
