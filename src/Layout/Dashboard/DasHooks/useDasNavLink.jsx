@@ -55,9 +55,9 @@ const useDasNavLink = () => {
           <NavLink
             to={"/dashboard/userReviews."}
             className={({ isActive }) =>
-              `px-3 py-2 rounded-md font-roboto text-base font-medium hover:bg-none ${
+              `px-3 py-2 rounded-md font-roboto text-base hover:bg-none ${
                 isActive
-                  ? "bg-blue-500 text-white hover:text-secondary dark:hover:text-white"
+                  ? "bg-blue-500 text-white hover:text-secondary dark:hover:text-white font-medium "
                   : "dark:text-gray-400 text-secondary hover:text-blue-900 "
               }`
             }
@@ -84,9 +84,9 @@ const useDasNavLink = () => {
           <NavLink
             to={"/dashboard/home"}
             className={({ isActive }) =>
-              `px-3 py-2 rounded-md font-roboto text-base font-medium hover:bg-none ${
+              `px-3 py-2 rounded-md font-roboto text-base hover:bg-none ${
                 isActive
-                  ? "bg-blue-500 text-white hover:text-secondary dark:hover:text-white"
+                  ? "bg-blue-500 text-white hover:text-secondary dark:hover:text-white font-medium "
                   : "dark:text-gray-400 text-secondary hover:text-blue-900 "
               }`
             }
@@ -103,9 +103,9 @@ const useDasNavLink = () => {
           <NavLink
             to={"/dashboard/addScholarship"}
             className={({ isActive }) =>
-              `px-3 py-2 rounded-md font-roboto text-base font-medium hover:bg-none ${
+              `px-3 py-2 rounded-md font-roboto text-base hover:bg-none ${
                 isActive
-                  ? "bg-blue-500 text-white hover:text-secondary dark:hover:text-white"
+                  ? "bg-blue-500 text-white hover:text-secondary dark:hover:text-white font-medium "
                   : "dark:text-gray-400 text-secondary hover:text-blue-900 "
               }`
             }
@@ -131,9 +131,9 @@ const useDasNavLink = () => {
           <NavLink
             to={"/dashboard/home"}
             className={({ isActive }) =>
-              `px-3 py-2 rounded-md font-roboto text-base font-medium hover:bg-none ${
+              `px-3 py-2 rounded-md font-roboto text-base hover:bg-none ${
                 isActive
-                  ? "bg-blue-500 text-white hover:text-secondary dark:hover:text-white"
+                  ? "bg-blue-500 text-white hover:text-secondary dark:hover:text-white font-medium "
                   : "dark:text-gray-400 text-secondary hover:text-blue-900 "
               }`
             }
@@ -150,9 +150,9 @@ const useDasNavLink = () => {
           <NavLink
             to={"/dashboard/addScholarship"}
             className={({ isActive }) =>
-              `px-3 py-2 rounded-md font-roboto text-base font-medium hover:bg-none ${
+              `px-3 py-2 rounded-md font-roboto text-base hover:bg-none ${
                 isActive
-                  ? "bg-blue-500 text-white hover:text-secondary dark:hover:text-white"
+                  ? "bg-blue-500 text-white hover:text-secondary dark:hover:text-white font-medium "
                   : "dark:text-gray-400 text-secondary hover:text-blue-900 "
               }`
             }
@@ -169,9 +169,9 @@ const useDasNavLink = () => {
           <NavLink
             to={"/dashboard/manageUsers"}
             className={({ isActive }) =>
-              `px-3 py-2 rounded-md font-roboto text-base font-medium hover:bg-none ${
+              `px-3 py-2 rounded-md font-roboto text-base hover:bg-none ${
                 isActive
-                  ? "bg-blue-500 text-white hover:text-secondary dark:hover:text-white"
+                  ? "bg-blue-500 text-white hover:text-secondary dark:hover:text-white font-medium "
                   : "dark:text-gray-400 text-secondary hover:text-blue-900 "
               }`
             }

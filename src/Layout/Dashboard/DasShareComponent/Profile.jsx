@@ -1,4 +1,4 @@
-import AdminProfileInfoDetails from "./userProfilrInfoDetails";
+import AdminProfileInfoDetails from "./AdminProfilrInfoDetails";
 
 
 const Profile = ({ user }) => {

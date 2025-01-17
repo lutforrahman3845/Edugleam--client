@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
 const useTotalScholarships = () => {
-  const axiosSecure = useAxiosSecure();
-  const { data: totalScholarships } = useQuery({
+         const axiosPublic = useAxiosPublic()
+  const { data: totalScholarships = { totalScholerships: 0 } } = useQuery({
     queryKey: ["totalScholarships"],
     queryFn: async () => {
-      const { data } = await axiosSecure.get("/totalScholarships");
+      const { data } = await axiosPublic.get("/totalScholarships");
       return data;
     },
   });
