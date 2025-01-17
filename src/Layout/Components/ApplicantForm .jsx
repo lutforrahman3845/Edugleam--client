@@ -4,16 +4,21 @@ import useUserDB from "../../Hooks/useUserDB";
 import { useState } from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const ApplicantForm = ({
   universityName,
   scholarshipCategory,
   subjectCategory,
   ScholarshipId,
+  applicationFees,
+  serviceCharge,
+  address
 }) => {
   const axiosSecure = useAxiosSecure();
   const [appling, setApplying] = useState(false);
   const { userDB } = useUserDB();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -47,15 +52,18 @@ const ApplicantForm = ({
         userName: userDB?.name,
         userEmail: userDB?.email,
         userId: userDB?._id,
+        applicationFees:applicationFees,
+        serviceCharge:serviceCharge,
+        address:address,
         scholarshipId: ScholarshipId,
         submissionDate: new Date().toISOString(),
       };
 
       await axiosSecure.post("/appliedScholarship", finalData).then((res) => {
         if (res.data.insertedId) {
-          toast.success("Applysuccessfully!", {
+          toast.success("Apply Successfully!", {
             position: "top-right",
-            autoClose: 1000,
+            autoClose: 3000,
             hideProgressBar: false,
             closeOnClick: false,
             pauseOnHover: true,
@@ -79,6 +87,7 @@ const ApplicantForm = ({
       });
     } finally {
       setApplying(false);
+      navigate("/")
     }
   };
 
@@ -183,6 +192,7 @@ const ApplicantForm = ({
       <input
         type="text"
         value={universityName}
+        {...register("universityName")}
         readOnly
         className="border p-2 rounded w-full bg-gray-200 text-gray-800"
       />
@@ -191,6 +201,7 @@ const ApplicantForm = ({
       <input
         type="text"
         value={scholarshipCategory}
+        {...register("scholarshipCategory")}
         readOnly
         className="border p-2 rounded w-full bg-gray-200 text-gray-800"
       />
@@ -199,6 +210,7 @@ const ApplicantForm = ({
       <input
         type="text"
         value={subjectCategory}
+        {...register("subjectCategory")}
         readOnly
         className="border p-2 rounded w-full bg-gray-200 text-gray-800"
       />

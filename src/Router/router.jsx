@@ -16,6 +16,7 @@ import AdminModeratorRoute from "./AdminModaratorRoute";
 import AllScholarships from "../Layout/UserLayout/Pages/AllScholarships";
 import ScholarshipDetails from "../Layout/UserLayout/Pages/ScholarshipDetails";
 import Payment from "../Layout/UserLayout/Pages/Payment";
+import UserAppliedScholaership from "../Layout/Dashboard/DashboardPages/UserAppliedScholaership";
 
 const router = createBrowserRouter([
   {
@@ -73,6 +74,9 @@ const router = createBrowserRouter([
       {
         path:"/dashboard/manageUsers",
         element:<AdminRoute><ManageAllUsers></ManageAllUsers></AdminRoute>
+      },{
+        path:"/dashboard/userApplication",
+        element:<PrivateRoute><UserAppliedScholaership/></PrivateRoute>
       }
     ]
   }

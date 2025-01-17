@@ -12,6 +12,7 @@ const Payment = () => {
   const { id } = useParams();
   const { scholarShipDetails, scholarshipDetailsLoading } =
     useScholarshipInfo(id);
+  const address = `${scholarShipDetails?.universityCity}, ${scholarShipDetails?.universityCountry}`;
   const totalFees =
     (parseFloat(scholarShipDetails?.applicationFees) || 0) +
     (parseFloat(scholarShipDetails?.serviceCharge) || 0);
@@ -90,7 +91,10 @@ const Payment = () => {
             universityName={ scholarShipDetails?.universityName }
             scholarshipCategory={ scholarShipDetails?.scholarshipCategory}
             subjectCategory={ scholarShipDetails?.subjectCategory}
+            applicationFees = {scholarShipDetails?.applicationFees}
+            serviceCharge = {scholarShipDetails?.serviceCharge}
             ScholarshipId={scholarShipDetails?._id}
+            address={address}
             />
           </Elements>
         </div>

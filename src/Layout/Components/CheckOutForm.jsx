@@ -10,13 +10,16 @@ const CheckOutForm = ({
   universityName,
   scholarshipCategory,
   subjectCategory,
-  ScholarshipId
+  ScholarshipId,
+  applicationFees,
+  serviceCharge,
+  address
 }) => {
   const axiosSecure = useAxiosSecure();
   const [error, setError] = useState("");
   const [clientSecret, setClientSecret] = useState("");
   const [transactionId, setTransactionId] = useState("");
-  const [paymentSuccess, setPaymentSuccess] = useState(true);
+  const [paymentSuccess, setPaymentSuccess] = useState(false);
   const { user } = useAuth();
   const stripe = useStripe();
   const elements = useElements();
@@ -127,6 +130,9 @@ const CheckOutForm = ({
           scholarshipCategory={scholarshipCategory}
           subjectCategory={subjectCategory}
           ScholarshipId={ScholarshipId}
+          applicationFees={applicationFees}
+          serviceCharge={serviceCharge}
+          address={address}
         />
         </div>
       )}
