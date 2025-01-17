@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const DetailsCard = ({ details = {}, id }) => {
   const {
     universityLogo,
@@ -130,9 +132,12 @@ const DetailsCard = ({ details = {}, id }) => {
 
       {/* Apply Button */}
       <div className="flex justify-center mt-6">
-        <button className="py-3 px-6 bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white font-semibold rounded-lg shadow-lg transition-all duration-300">
+        <Link
+          to={`/payment/${id}`}
+          className="py-3 px-6 bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white font-semibold rounded-lg shadow-lg transition-all duration-300"
+        >
           Apply Scholarship →
-        </button>
+        </Link>
       </div>
     </div>
   );

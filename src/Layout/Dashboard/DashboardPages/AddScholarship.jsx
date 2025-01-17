@@ -281,7 +281,6 @@ const AddScholarship = () => {
             selected={scholarshipPostDate}
             onChange={(date) => {
               setScholarshipPostDate(date);
-              setValue("scholarshipPostDate", date);
             }}
             disabled
             className="w-full p-2 border rounded-md dark:bg-white focus:outline-primary"
