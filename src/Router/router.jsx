@@ -14,6 +14,7 @@ import AdminRoute from "./AdminRoute";
 import ManageAllUsers from "../Layout/Dashboard/DashboardPages/ManageAllUsers";
 import AdminModeratorRoute from "./AdminModaratorRoute";
 import AllScholarships from "../Layout/UserLayout/Pages/AllScholarships";
+import ScholarshipDetails from "../Layout/UserLayout/Pages/ScholarshipDetails";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       },{
         path:"/scholarships",
         element:<AllScholarships/>
+      },
+      {
+        path:"/scholarship/:id",
+        element:<PrivateRoute><ScholarshipDetails></ScholarshipDetails></PrivateRoute>
       }
     ],
   },

@@ -7,6 +7,7 @@ import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import docTitle from "../../../Hooks/Title";
 import ScholarshipCard from "../../Components/ScholarshipCard";
 import useTotalScholarships from "../../Dashboard/DasHooks/useTotalScholarships";
+import Loading from "../../Components/Loading";
 const AllScholarships = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -19,7 +20,7 @@ const AllScholarships = () => {
     e.preventDefault();
     setSearch(e.target.search.value);
   };
-  const { data: allScholarShip } = useQuery({
+  const { data: allScholarShip, isLoading } = useQuery({
     queryKey: ["allScholarships", search, currentPage],
     queryFn: async () => {
       const { data } = await axiosPublic(
@@ -38,7 +39,6 @@ const AllScholarships = () => {
     setCurrentPage(value);
   };
   docTitle("All Scholarships | EduGleam");
-
   return (
     <div className="pt-10">
       <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-4 text-primary font-poppins">
@@ -54,6 +54,7 @@ const AllScholarships = () => {
             placeholder="Search by Scholarship, University, Degree name"
             className="bg-white dark:bg-secondary w-full rounded-md focus:outline-none py-2 pl-2  font-semibold border-none "
             name="search"
+            autoFocus
             value={search}
             onChange={(e) => {
               setSearch(e.target.value.trim());
@@ -68,12 +69,14 @@ const AllScholarships = () => {
 
       <div
         className={`grid  mx-4 my-16 md:my-20 ${
-          allScholarShip?.length === 0
+          allScholarShip?.length === 0 || isLoading
             ? "grid-cols-1"
             : " grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
         }`}
       >
-        {allScholarShip?.length === 0 ? (
+        {isLoading ? (
+          <Loading></Loading>
+        ) : allScholarShip?.length === 0 ? (
           <div>
             <p className="text-base md:text-lg text-center font-semibold text-red-600 mt-4 font-roboto">
               No scholarships found. Try searching with different keywords.

@@ -1,7 +1,7 @@
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { Link } from "react-router-dom";
 
-const ScholarshipCard = ({ scholarship = [] }) => {
+const ScholarshipCard = ({ scholarship = []}) => {
   const {
     _id,
     universityLogo,
@@ -16,7 +16,6 @@ const ScholarshipCard = ({ scholarship = [] }) => {
 
   return (
     <div className="relative bg-white dark:bg-gray-900 shadow-lg p-6 rounded-xl border border-gray-200 dark:border-gray-700  hover:shadow-2xl hover:scale-[1.02] overflow-hidden group flex flex-col justify-between ">
-      
       <div className="flex items-center gap-3 mb-5">
         {/* University Logo */}
         <div className="w-12 h-12 rounded-full border border-pri bg-white flex items-center justify-center overflow-hidden shadow-md group-hover:scale-105">
@@ -36,20 +35,34 @@ const ScholarshipCard = ({ scholarship = [] }) => {
       {/* Scholarship Details */}
       <div className="space-y-2 text-gray-700 dark:text-gray-300 text-sm">
         <p>
-          <strong className="font-medium text-gray-900 dark:text-white">Scholarship:</strong> {scholarshipCategory}
+          <strong className="font-medium text-gray-900 dark:text-white">
+            Scholarship:
+          </strong>{" "}
+          {scholarshipCategory}
         </p>
         <p>
-          <strong className="font-medium text-gray-900 dark:text-white">Location:</strong> {universityCity}, {universityCountry}
+          <strong className="font-medium text-gray-900 dark:text-white">
+            Location:
+          </strong>{" "}
+          {universityCity}, {universityCountry}
         </p>
         <p>
-          <strong className="font-medium text-gray-900 dark:text-white">Deadline:</strong> {new Date(applicationDeadline).toLocaleDateString()}
+          <strong className="font-medium text-gray-900 dark:text-white">
+            Deadline:
+          </strong>{" "}
+          {new Date(applicationDeadline).toLocaleDateString()}
         </p>
         <p>
-          <strong className="font-medium text-gray-900 dark:text-white">Subject:</strong> {subjectCategory}
+          <strong className="font-medium text-gray-900 dark:text-white">
+            Subject:
+          </strong>{" "}
+          {subjectCategory}
         </p>
         <p>
-          <strong className="font-medium text-gray-900 dark:text-white">Application Fees:</strong> $
-          {applicationFees || "N/A"}
+          <strong className="font-medium text-gray-900 dark:text-white">
+            Application Fees:
+          </strong>{" "}
+          ${applicationFees || "N/A"}
         </p>
       </div>
 
