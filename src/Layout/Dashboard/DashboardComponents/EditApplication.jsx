@@ -2,6 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { toast } from "react-toastify";
 
 const EditApplication = ({ applicationEdit }) => {
   const queryClient = useQueryClient();
@@ -30,7 +31,7 @@ const EditApplication = ({ applicationEdit }) => {
     onSuccess: () => {
       queryClient.invalidateQueries(["userApplication"]);
       document.getElementById("my_modal_1").close();
-      toast.success("Application update successfullu", {
+      toast.success("Application update successfully", {
         position: "top-right",
         autoClose: 1000,
         hideProgressBar: false,

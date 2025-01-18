@@ -7,10 +7,15 @@ import ModalDetaisForUser from "../DashboardComponents/ModalDetaisForUser";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import EditApplication from "../DashboardComponents/EditApplication";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import Swal from "sweetalert2";
+import GiveReview from "../DashboardComponents/GiveReview";
 
 const UserAppliedScholaership = () => {
+  const axiosSecure = useAxiosSecure();
   const [scholarshipId, setScholarshipId] = useState(null);
   const [applicationEdit, setApplicationEdit] = useState({});
+  const [applicationReview, setApplicationReview] = useState({});
   const { appliedScholarship, loadingAppliedScholar, appliedRefetch } =
     useAppliedScholarship();
   const handleDetails = (_id) => {
@@ -18,7 +23,7 @@ const UserAppliedScholaership = () => {
     setScholarshipId(_id);
   };
   const handleEdit = (scholarship) => {
-    if (!scholarship?.status) {
+    if (scholarship?.status) {
       return toast.error("The application is processing,cann't edit now !", {
         position: "top-right",
         autoClose: 1000,
@@ -33,6 +38,46 @@ const UserAppliedScholaership = () => {
     document.getElementById("my_modal_1").showModal();
     setApplicationEdit(scholarship);
   };
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const res = await axiosSecure.delete(`/deleteApplication/${id}`);
+          if (res.data.deletedCount > 0) {
+            appliedRefetch()
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your application has been deleted.",
+              icon: "success",
+            });
+          }
+        } catch (error) {
+          toast.error(`${error.message}`, {
+            position: "top-right",
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+        }
+      }
+    });
+  };
+  const handleReview= (scholarship)=>{
+    document.getElementById('my_modal_5').showModal()
+    setApplicationReview(scholarship)
+  }
   if (loadingAppliedScholar) return <Loading></Loading>;
   return (
     <div className="bg-white dark:bg-secondary font-roboto rounded-md">
@@ -108,12 +153,17 @@ const UserAppliedScholaership = () => {
                       >
                         <BiDetail />
                       </button>
-                      <button className="text-red-700">
+                      <button
+                        onClick={() => handleDelete(scholarship?._id)}
+                        className="text-red-700"
+                      >
                         <RiDeleteBinLine />
                       </button>
                     </td>
                     <td>
-                      <button className="text-white bg-primary py-1 px-2 rounded-md">
+                      <button
+                      onClick={()=>handleReview(scholarship)}
+                       className="text-white bg-primary py-1 px-2 rounded-md">
                         Review
                       </button>
                     </td>
@@ -134,6 +184,8 @@ const UserAppliedScholaership = () => {
       />
       {/* Edit Modal */}
       <EditApplication applicationEdit={applicationEdit} />
+      {/* Review Modal */}
+      <GiveReview ReviewInfo = {applicationReview}/>
     </div>
   );
 };

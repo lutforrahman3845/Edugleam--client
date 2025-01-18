@@ -1,7 +1,10 @@
+import useAppliedScholarship from "../DasHooks/useAppliedScholarship";
 import AdminProfileInfoDetails from "./AdminProfilrInfoDetails";
 
 
 const Profile = ({ user }) => {
+  const { appliedScholarship} =
+    useAppliedScholarship();
   return (
     <section className="flex flex-col items-center py-12 ">
       <div className="max-w-lg w-full bg-white dark:bg-secondary shadow-md rounded-lg overflow-hidden">
@@ -35,9 +38,9 @@ const Profile = ({ user }) => {
             <ul className="space-y-2">
               <li>
                 <span className="font-medium text-gray-700 dark:text-white font-roboto">
-                  Email:{" "}
+                  Total Application :{" "}
                 </span>
-                {user?.email}
+                {appliedScholarship?.length}
               </li>
             </ul>
           </div>
