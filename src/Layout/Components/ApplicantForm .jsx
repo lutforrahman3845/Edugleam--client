@@ -13,7 +13,7 @@ const ApplicantForm = ({
   ScholarshipId,
   applicationFees,
   serviceCharge,
-  address
+  address,
 }) => {
   const axiosSecure = useAxiosSecure();
   const [appling, setApplying] = useState(false);
@@ -28,9 +28,22 @@ const ApplicantForm = ({
 
   const onSubmit = async (data) => {
     // Ensure all fields are filled
-    if (!data.phone || !data.address || !data.sscResult || !data.hscResult) {
-      alert("Please fill all required fields.");
-      return;
+    if (
+      !data.phone ||
+      !data.userAddress ||
+      !data.sscResult ||
+      !data.hscResult
+    ) {
+      return toast.success("Please fill all required fields", {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });      
     }
 
     const formData = new FormData();
@@ -52,9 +65,9 @@ const ApplicantForm = ({
         userName: userDB?.name,
         userEmail: userDB?.email,
         userId: userDB?._id,
-        applicationFees:applicationFees,
-        serviceCharge:serviceCharge,
-        address:address,
+        applicationFees: applicationFees,
+        serviceCharge: serviceCharge,
+        address: address,
         scholarshipId: ScholarshipId,
         submissionDate: new Date().toISOString(),
       };
@@ -87,7 +100,7 @@ const ApplicantForm = ({
       });
     } finally {
       setApplying(false);
-      navigate("/")
+      navigate("/");
     }
   };
 
@@ -126,7 +139,7 @@ const ApplicantForm = ({
       </label>
       <input
         type="text"
-        {...register("address", { required: true })}
+        {...register("userAddress", { required: true })}
         className="border p-2 rounded w-full bg-white text-gray-800"
       />
       {errors.address && <p className="text-red-500">Address is required.</p>}
@@ -184,7 +197,7 @@ const ApplicantForm = ({
         <option>No Gap</option>
         <option>1 Year</option>
         <option>2 Years</option>
-        <option>3+ Years</option>
+        <option>More than 2 Years</option>
       </select>
 
       {/* Read-Only Fields */}

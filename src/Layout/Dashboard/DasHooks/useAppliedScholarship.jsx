@@ -6,7 +6,7 @@ const useAppliedScholarship = () => {
     const {user} = useAuth()
     const axiosSecure = useAxiosSecure();
     const {data:appliedScholarship=[], isLoading:loadingAppliedScholar, refetch:appliedRefetch} = useQuery({
-        queryKey: ["appliedScholarship", user?.email],
+        queryKey: [" userApplication", user?.email],
         queryFn: async () => {
             const {data} =await axiosSecure.get(`/aplliedScholarShip/${user?.email}`)
             return data;
