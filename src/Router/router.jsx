@@ -19,6 +19,7 @@ import Payment from "../Layout/UserLayout/Pages/Payment";
 import UserAppliedScholaership from "../Layout/Dashboard/DashboardPages/UserAppliedScholaership";
 import UserReviews from "../Layout/Dashboard/DashboardPages/UserReviews";
 import MangeScholarship from "../Layout/Dashboard/DashboardPages/MangeScholarship";
+import ManageReview from "../Layout/Dashboard/DashboardPages/ManageReview";
 
 const router = createBrowserRouter([
   {
@@ -87,6 +88,9 @@ const router = createBrowserRouter([
       {
         path:"/dashboard/userReviews",
         element:<PrivateRoute><UserReviews/></PrivateRoute>
+      },{
+        path:"/dashboard/allreviews",
+        element:<AdminModeratorRoute><ManageReview/></AdminModeratorRoute>
       }
     ]
   }

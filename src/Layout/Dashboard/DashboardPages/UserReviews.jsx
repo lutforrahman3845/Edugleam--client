@@ -29,7 +29,7 @@ const UserReviews = () => {
       }).then(async (result) => {
         if (result.isConfirmed) {
           try {
-            const res = await axiosSecure.delete(`/deleteReview/${id}`);
+            const res = await axiosSecure.delete(`/deleteUserReview/${id}`);
             if (res.data.deletedCount > 0) {
             userReviewRefetch()
               Swal.fire({
