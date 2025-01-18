@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useRole from "../../Hooks/useRole";
 import { toast } from "react-toastify";
 
-const DetailsCard = ({ details = {}, }) => {
+const DetailsCard = ({ details = {} }) => {
   const { role } = useRole();
   const navigate = useNavigate();
   const {
@@ -38,9 +38,9 @@ const DetailsCard = ({ details = {}, }) => {
     navigate(`/payment/${id}`);
   };
   return (
-    <div className="max-w-6xl mx-auto font-roboto">
+    <div className="font-roboto">
       {/* University Image */}
-      <div className="relative bg-gray-100 dark:bg-secondary p-6 rounded-xl shadow-lg flex flex-col items-center">
+      <div className=" bg-gray-100 dark:bg-secondary p-6 rounded-xl shadow-lg flex flex-col items-center">
         <img
           src={universityLogo}
           alt={universityName}
@@ -65,7 +65,7 @@ const DetailsCard = ({ details = {}, }) => {
             <p className="text-lg font-semibold text-primary">
               Scholarship Details : {}
             </p>
-            <div className="grid sm:grid-cols-2 gap-y-2 text-sm text-gray-700">
+            <div className="grid sm:grid-cols-2 gap-y-3 text-sm text-gray-700">
               <p>
                 <span className="font-medium text-base  dark:text-gray-300 ">
                   Subject :
@@ -103,7 +103,7 @@ const DetailsCard = ({ details = {}, }) => {
             {/* Funding */}
             <div className="mt-4">
               <p className="text-lg font-semibold text-primary">Funding</p>
-              <div className="flex flex-wrap gap-3 mt-2">
+              <div className=" mt-2">
                 <span className="bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-medium shadow-md">
                   {scholarshipCategory}
                 </span>
@@ -116,12 +116,12 @@ const DetailsCard = ({ details = {}, }) => {
             <p className="text-lg font-semibold text-primary ">
               Scholarship Description
             </p>
-            <p className="text-gray-700  dark:text-gray-300 leading-relaxed mt-2">
+            <p className="text-gray-700  dark:text-gray-300 leading-relaxed mt-3">
               {scholarshipName}
             </p>
 
             {/* Post Date */}
-            <p className="text-gray-600  text-sm mt-2">
+            <p className="text-gray-600  text-sm mt-3">
               <span className="font-medium text-base dark:text-gray-300 ">
                 Posted on :
               </span>{" "}
@@ -129,7 +129,7 @@ const DetailsCard = ({ details = {}, }) => {
                 {new Date(scholarshipPostDate).toLocaleDateString()}
               </span>
             </p>
-            <p className="text-gray-600  text-sm mt-2">
+            <p className="text-gray-600  text-sm mt-3">
               <span className="font-medium text-base dark:text-gray-300 ">
                 Application Fees :
               </span>{" "}
@@ -138,7 +138,7 @@ const DetailsCard = ({ details = {}, }) => {
               </span>
             </p>
 
-            <p className="text-gray-600  text-sm mt-2">
+            <p className="text-gray-600  text-sm mt-3">
               <span className="font-medium text-base dark:text-gray-300 ">
                 Service Charge :
               </span>{" "}
@@ -153,7 +153,7 @@ const DetailsCard = ({ details = {}, }) => {
       {/* Apply Button */}
       <div className="flex justify-center mt-6">
         <button
-          onClick={() =>handleApply(_id)}
+          onClick={() => handleApply(_id)}
           className="py-3 px-6 bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white font-semibold rounded-lg shadow-lg transition-all duration-300"
         >
           Apply Scholarship →
