@@ -1,10 +1,13 @@
 import useAppliedScholarship from "../DasHooks/useAppliedScholarship";
+import useUserReview from "../DasHooks/useUserReview";
 import AdminProfileInfoDetails from "./AdminProfilrInfoDetails";
+import ModeratorProfileInfoDetails from "./ModeratorProfileInfoDetails";
 
 
 const Profile = ({ user }) => {
   const { appliedScholarship} =
     useAppliedScholarship();
+    const {userReviews} =useUserReview();
   return (
     <section className="flex flex-col items-center py-12 ">
       <div className="max-w-lg w-full bg-white dark:bg-secondary shadow-md rounded-lg overflow-hidden">
@@ -35,12 +38,18 @@ const Profile = ({ user }) => {
             <h3 className="text-lg font-semibold mb-2 font-poppins">
               User Details
             </h3>
-            <ul className="space-y-2">
+            <ul>
               <li>
                 <span className="font-medium text-gray-700 dark:text-white font-roboto">
                   Total Application :{" "}
                 </span>
                 {appliedScholarship?.length}
+              </li>
+              <li>
+                <span className="font-medium text-gray-700 dark:text-white font-roboto">
+                  Total Given reviews :{" "}
+                </span>
+                {userReviews?.length}
               </li>
             </ul>
           </div>

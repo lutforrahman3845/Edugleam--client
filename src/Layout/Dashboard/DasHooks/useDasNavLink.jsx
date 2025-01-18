@@ -53,7 +53,7 @@ const useDasNavLink = () => {
       {user && !role && (
         <li>
           <NavLink
-            to={"/dashboard/userReviews."}
+            to={"/dashboard/userReviews"}
             className={({ isActive }) =>
               `px-3 py-2 rounded-md font-roboto text-base hover:bg-none ${
                 isActive

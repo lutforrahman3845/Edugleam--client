@@ -1,7 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useRole from "../../Hooks/useRole";
+import { toast } from "react-toastify";
 
-const DetailsCard = ({ details = {}, id }) => {
+const DetailsCard = ({ details = {}, }) => {
+  const { role } = useRole();
+  const navigate = useNavigate();
   const {
+    _id,
     universityLogo,
     universityName,
     scholarshipName,
@@ -17,6 +22,21 @@ const DetailsCard = ({ details = {}, id }) => {
     serviceCharge,
     applicationFees,
   } = details;
+  const handleApply = (id) => {
+    if (role === "admin" || role === "moderator") {
+      return toast.error(`You are the ${role}. You can't apply scholarship`, {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+    navigate(`/payment/${id}`);
+  };
   return (
     <div className="max-w-6xl mx-auto font-roboto">
       {/* University Image */}
@@ -132,12 +152,12 @@ const DetailsCard = ({ details = {}, id }) => {
 
       {/* Apply Button */}
       <div className="flex justify-center mt-6">
-        <Link
-          to={`/payment/${id}`}
+        <button
+          onClick={() =>handleApply(_id)}
           className="py-3 px-6 bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white font-semibold rounded-lg shadow-lg transition-all duration-300"
         >
           Apply Scholarship →
-        </Link>
+        </button>
       </div>
     </div>
   );

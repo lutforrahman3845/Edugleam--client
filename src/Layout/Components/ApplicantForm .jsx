@@ -72,7 +72,7 @@ const ApplicantForm = ({
         submissionDate: new Date().toISOString(),
       };
 
-      await axiosSecure.post("/appliedScholarship", finalData).then((res) => {
+      await axiosSecure.post("/applingScholarship", finalData).then((res) => {
         if (res.data.insertedId) {
           toast.success("Apply Successfully!", {
             position: "top-right",
@@ -86,6 +86,7 @@ const ApplicantForm = ({
           });
         }
         reset();
+        navigate("/");
       });
     } catch (error) {
       toast.error(`${error.message} .Please try again.`, {
@@ -100,7 +101,6 @@ const ApplicantForm = ({
       });
     } finally {
       setApplying(false);
-      navigate("/");
     }
   };
 

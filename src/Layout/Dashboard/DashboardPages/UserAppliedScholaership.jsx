@@ -10,6 +10,7 @@ import EditApplication from "../DashboardComponents/EditApplication";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import GiveReview from "../DashboardComponents/GiveReview";
+import docTitle from "../../../Hooks/Title";
 
 const UserAppliedScholaership = () => {
   const axiosSecure = useAxiosSecure();
@@ -78,6 +79,7 @@ const UserAppliedScholaership = () => {
     document.getElementById('my_modal_5').showModal()
     setApplicationReview(scholarship)
   }
+  docTitle("My Applications | Dashboard")
   if (loadingAppliedScholar) return <Loading></Loading>;
   return (
     <div className="bg-white dark:bg-secondary font-roboto rounded-md">
@@ -88,7 +90,7 @@ const UserAppliedScholaership = () => {
         {appliedScholarship.length <= 0 ? (
           <div className="text-red-600 text-center text-lg ">
             {" "}
-            No scholarship applied{" "}
+            No scholarship applied found{" "}
           </div>
         ) : (
           <div className="overflow-x-auto">

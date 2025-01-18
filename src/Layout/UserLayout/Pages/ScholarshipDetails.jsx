@@ -14,7 +14,7 @@ const ScholarshipDetails = () => {
   return (
     <div className="pt-10">
       <div className="flex justify-center items-center mx-4">
-        <DetailsCard details={scholarShipDetails} id={id}></DetailsCard>
+        <DetailsCard details={scholarShipDetails}></DetailsCard>
       </div>
     </div>
   );
