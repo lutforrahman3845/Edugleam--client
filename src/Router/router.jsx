@@ -18,6 +18,7 @@ import ScholarshipDetails from "../Layout/UserLayout/Pages/ScholarshipDetails";
 import Payment from "../Layout/UserLayout/Pages/Payment";
 import UserAppliedScholaership from "../Layout/Dashboard/DashboardPages/UserAppliedScholaership";
 import UserReviews from "../Layout/Dashboard/DashboardPages/UserReviews";
+import MangeScholarship from "../Layout/Dashboard/DashboardPages/MangeScholarship";
 
 const router = createBrowserRouter([
   {
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
       {
         path:"/dashboard/addScholarship",
         element:<AdminModeratorRoute><AddScholarship></AddScholarship></AdminModeratorRoute>
+      },
+      {
+        path:"/dashboard/manageScholarships",
+        element:<AdminModeratorRoute><MangeScholarship/></AdminModeratorRoute>
       },
       {
         path:"/dashboard/manageUsers",

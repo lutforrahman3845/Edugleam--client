@@ -81,7 +81,7 @@ const EditReview = ({ editReview }) => {
           <div>
             <label className="font-semibold">Your Review</label>
             <textarea
-              className="textarea textarea-bordered w-full mt-3"
+              className="py-5 px-2 border border-primary focus:outline-primary rounded-md w-full mt-3"
               placeholder="Write your review here..."
               value={comment}
               onChange={(e) => setComment(e.target.value)}

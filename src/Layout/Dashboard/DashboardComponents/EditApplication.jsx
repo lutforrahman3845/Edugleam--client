@@ -114,7 +114,7 @@ const EditApplication = ({ applicationEdit }) => {
               type="file"
               name="photo"
               accept="image/*"
-              className="file-input file-input-bordered w-full"
+              className="p-2 border border-primary focus:outline-primary rounded-md w-full"
               onChange={handlePhotoChange}
             />
           </div>
@@ -126,7 +126,7 @@ const EditApplication = ({ applicationEdit }) => {
               type="text"
               defaultValue={applicationEdit?.phone}
               name="phone"
-              className="input input-bordered w-full"
+              className="p-2 border border-primary focus:outline-primary rounded-md w-full"
               required
             />
           </div>
@@ -138,7 +138,7 @@ const EditApplication = ({ applicationEdit }) => {
               type="text"
               defaultValue={applicationEdit?.userAddress}
               name="address"
-              className="input input-bordered w-full"
+              className="p-2 border border-primary focus:outline-primary rounded-md w-full"
               required
             />
           </div>
@@ -150,7 +150,7 @@ const EditApplication = ({ applicationEdit }) => {
               name="gender"
               value={gender}
               onChange={(e) => setGender(e.target.value)}
-              className="select select-bordered w-full"
+              className="p-2 border border-primary focus:outline-primary rounded-md w-full"
             >
               <option value="Male">Male</option>
               <option value="Female">Female</option>
@@ -165,7 +165,7 @@ const EditApplication = ({ applicationEdit }) => {
               name="degree"
               value={degree}
               onChange={(e) => setDegree(e.target.value)}
-              className="select select-bordered w-full"
+              className="p-2 border border-primary focus:outline-primary rounded-md w-full"
             >
               <option value="Diploma">Diploma</option>
               <option value="Bachelor">Bachelor</option>
@@ -180,7 +180,7 @@ const EditApplication = ({ applicationEdit }) => {
               type="text"
               defaultValue={applicationEdit?.sscResult}
               name="sscResult"
-              className="input input-bordered w-full"
+              className="p-2 border border-primary focus:outline-primary rounded-md w-full"
               required
             />
           </div>
@@ -192,7 +192,7 @@ const EditApplication = ({ applicationEdit }) => {
               type="text"
               defaultValue={applicationEdit?.hscResult}
               name="hscResult"
-              className="input input-bordered w-full"
+              className="p-2 border border-primary focus:outline-primary rounded-md w-full"
               required
             />
           </div>
@@ -204,7 +204,7 @@ const EditApplication = ({ applicationEdit }) => {
               name="studyGap"
               value={studyGap}
               onChange={(e) => setStudyGap(e.target.value)}
-              className="select select-bordered w-full"
+              className="p-2 border border-primary focus:outline-primary rounded-md w-full"
             >
               <option value="No">No</option>
               <option value="1 Year">1 Year</option>
