@@ -33,23 +33,80 @@ const ManageAppliedScholarship = () => {
     },
   });
 
+  const handleStatusChange = (id, prvStatus, newStatus) => {
+    if (prvStatus === "rejected") {
+      return toast.error(
+        "This Application already rejected cann't change status now",
+        {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        }
+      );
+    }
+    Swal.fire({
+      title: "Are you sure?",
+      text: `This application status will be ${newStatus}`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, cancle it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const res = await axiosSecure.patch(
+            `/updateAppliedScholarship/${id}`,
+            { status: newStatus }
+          );
+          if (res.data.modifiedCount > 0) {
+            allAppliedScholarshipRefetch();
+            Swal.fire({
+              title: `${newStatus}`,
+              text: `This application has been ${newStatus}`,
+              icon: "success",
+            });
+          }
+        } catch (error) {
+          toast.error(`${error.message}`, {
+            position: "top-right",
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+        }
+      }
+    });
+  };
+
   const handleDetails = (appliedScholarship) => {
     document.getElementById("my_modal_3").showModal();
     setAppliedScholarshipDetails(appliedScholarship);
   };
   const handleCancel = async (id) => {
-     Swal.fire({
+    Swal.fire({
       title: "Are you sure?",
       text: "This application will be rejected!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonText: "Yes, cancle it!",
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-            const res = await axiosSecure.patch(`/cancelAppliedScholarship/${id}`);
+          const res = await axiosSecure.patch(
+            `/cancelAppliedScholarship/${id}`
+          );
           if (res.data.modifiedCount > 0) {
             allAppliedScholarshipRefetch();
             Swal.fire({
@@ -133,27 +190,47 @@ const ManageAppliedScholarship = () => {
                     <td>{appliedSchlr?.userName}</td>
                     <td>{appliedSchlr?.userEmail}</td>
                     <td>
-                      <span
-                        className={`text-white py-1 px-2 text-xs ${
-                          appliedSchlr?.status === "processing" &&
-                          "bg-yellow-500  rounded-full"
-                        } ${
-                          appliedSchlr?.status === "completed" &&
-                          "bg-green-400  rounded-full"
-                        }
+                      <div className="flex items-center">
+                        <div>
+                          <span
+                            className={`text-white py-1 px-2 text-xs ${
+                              appliedSchlr?.status === "processing" &&
+                              "bg-yellow-500  rounded-full"
+                            } ${
+                              appliedSchlr?.status === "completed" &&
+                              "bg-green-400  rounded-full"
+                            }
                     ${
                       appliedSchlr?.status === "rejected" &&
                       "bg-red-500  rounded-full"
                     }
-                    ${
-                      !appliedSchlr?.status && "bg-gray-700  rounded-full"
-                    }
+                    ${!appliedSchlr?.status && "bg-gray-700  rounded-full"}
                      `}
-                      >
-                        {appliedSchlr?.status
-                          ? appliedSchlr?.status
-                          : " pending"}
-                      </span>
+                          >
+                            {appliedSchlr?.status
+                              ? appliedSchlr?.status
+                              : " pending"}
+                          </span>
+                        </div>
+                        <select
+                          value={""}
+                          onChange={(e) =>
+                            handleStatusChange(
+                              appliedSchlr._id,
+                              appliedSchlr?.status,
+                              e.target.value
+                            )
+                          }
+                        >
+                          <option disabled value=""></option>
+                          <option className="bg-yellow-500" value="processing">
+                            Processing
+                          </option>
+                          <option className="bg-green-600" value="completed">
+                            Completed
+                          </option>
+                        </select>
+                      </div>
                     </td>
                     <td className="text-2xl flex gap-2">
                       <button

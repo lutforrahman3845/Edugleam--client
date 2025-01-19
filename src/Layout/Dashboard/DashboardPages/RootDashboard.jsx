@@ -18,12 +18,12 @@ const RootDashboard = () => {
     document.getElementById("my-drawer-2").checked = false;
   };
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto ">
       <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content flex flex-col  min-h-screen">
+        <div className="drawer-content flex flex-col  min-h-screen ">
           {/* Dashboard topbar */}
-          <div className="w-full  dark:bg-primary/10 shadow p-4 flex items-center justify-between">
+          <div className="w-full  dark:bg-primary/10 shadow p-4 flex items-center justify-between ">
             <div className="flex items-center">
               <label
                 htmlFor="my-drawer-2"

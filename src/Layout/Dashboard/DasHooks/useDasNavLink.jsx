@@ -3,6 +3,7 @@ import useAuth from "../../../Hooks/useAuth";
 import useRole from "../../../Hooks/useRole";
 import { VscPreview } from "react-icons/vsc";
 import {
+  FaChartLine,
   FaGraduationCap,
   FaRegCommentDots,
   FaRegUserCircle,
@@ -284,6 +285,25 @@ const useDasNavLink = () => {
             <div className="flex items-center gap-1">
               <VscPreview className="text-xl" />
               Manage reviews
+            </div>
+          </NavLink>
+        </li>
+      )}
+      {user && role === "admin" && (
+        <li>
+          <NavLink
+            to={"/dashboard/statistic"}
+            className={({ isActive }) =>
+              `px-3 py-2 rounded-md font-roboto text-base hover:bg-none ${
+                isActive
+                  ? "bg-blue-500 text-white hover:text-secondary dark:hover:text-white font-medium "
+                  : "dark:text-gray-400 text-secondary hover:text-blue-900 "
+              }`
+            }
+          >
+            <div className="flex items-center gap-1">
+              <FaChartLine className="text-xl" />
+              Statistics
             </div>
           </NavLink>
         </li>

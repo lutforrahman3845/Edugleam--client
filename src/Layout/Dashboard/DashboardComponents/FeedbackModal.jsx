@@ -12,7 +12,7 @@ const FeedbackModal = ({ id }) => {
     },
     onSuccess: () => {
           document.getElementById("my_modal_1").close();
-          toast.success("Review update successfully", {
+          toast.success("Feedback given successfully", {
             position: "top-right",
             autoClose: 1000,
             hideProgressBar: false,
@@ -40,6 +40,7 @@ const FeedbackModal = ({ id }) => {
     e.preventDefault();
     const feedback = e.target.feedback.value;
     mutateAsync({feedback});
+    e.target.reset()
   };
   return (
     <dialog id="my_modal_1" className="modal">

@@ -135,10 +135,10 @@ const UserAppliedScholaership = () => {
                           "bg-green-400  rounded-full"
                         }
                         ${
-                          appliedSchlr?.status === "rejected" &&
+                          scholarship?.status === "rejected" &&
                           "bg-red-500  rounded-full"
                         }
-                        ${!appliedSchlr?.status && "bg-gray-700  rounded-full"}
+                        ${!scholarship?.status && "bg-gray-700  rounded-full"}
                      `}
                       >
                         {scholarship?.status ? scholarship?.status : " pending"}

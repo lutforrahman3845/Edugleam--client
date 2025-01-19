@@ -40,7 +40,7 @@ const ManageAllUsers = () => {
     }
 
     try {
-      const { data } = await axiosSecure.patch(`/users/${id}`, {
+      const { data } = await axiosSecure.patch(`/usersRoleChange/${id}`, {
         role: newrole,
       });
       if (data.modifiedCount > 0) {

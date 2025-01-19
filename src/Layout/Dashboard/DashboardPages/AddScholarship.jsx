@@ -82,7 +82,7 @@ const AddScholarship = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="max-w-7xl mx-auto p-6 border  rounded-lg shadow-lg bg-white dark:bg-secondary"
       >
-        <h2 className="text-2xl font-bold mb-6">Add Scholarship Information</h2>
+        <h2 className="text-lg sm:text-md md:text-2xl font-bold mb-6 text-center">Add Scholarship Information</h2>
         {/* Name of the scholarship */}
         <div className="mb-4">
           <label className="block font-medium mb-1">Scholarship Name</label>

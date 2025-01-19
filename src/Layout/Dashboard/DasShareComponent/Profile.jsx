@@ -1,13 +1,13 @@
+import { VscPreview } from "react-icons/vsc";
 import useAppliedScholarship from "../DasHooks/useAppliedScholarship";
 import useUserReview from "../DasHooks/useUserReview";
 import AdminProfileInfoDetails from "./AdminProfilrInfoDetails";
 import ModeratorProfileInfoDetails from "./ModeratorProfileInfoDetails";
-
+import { IoIosDocument } from "react-icons/io";
 
 const Profile = ({ user }) => {
-  const { appliedScholarship} =
-    useAppliedScholarship();
-    const {userReviews} =useUserReview();
+  const { appliedScholarship } = useAppliedScholarship();
+  const { userReviews } = useUserReview();
   return (
     <section className="flex flex-col items-center py-12 ">
       <div className="max-w-lg w-full bg-white dark:bg-secondary shadow-md rounded-lg overflow-hidden">
@@ -19,7 +19,11 @@ const Profile = ({ user }) => {
           />
           <h2 className="mt-4 text-2xl font-bold font-poppins">{user?.name}</h2>
           <p className="mt-1 text-sm font-roboto">{user?.email}</p>
-          {user?.role === "admin" ? (
+          {!user?.role ? (
+            <span className="mt-3 inline-block bg-secondary text-white text-xs font-semibold px-3 py-1 rounded-full">
+              User
+            </span>
+          ) : user?.role === "admin" ? (
             <span className="mt-3 inline-block bg-secondary text-white text-xs font-semibold px-3 py-1 rounded-full">
               {user?.role}
             </span>
@@ -38,18 +42,22 @@ const Profile = ({ user }) => {
             <h3 className="text-lg font-semibold mb-2 font-poppins">
               User Details
             </h3>
-            <ul>
-              <li>
-                <span className="font-medium text-gray-700 dark:text-white font-roboto">
-                  Total Application :{" "}
-                </span>
-                {appliedScholarship?.length}
+            <ul className="grid sm:grid-cols-2 gap-4">
+              <li className="py-2 px-4 rounded-lg text-white flex flex-col items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 shadow-md hover:shadow-lg ">
+                <p className="text-2xl font-bold">{userReviews?.length}</p>
+                <p className="text-lg font-semibold font-roboto flex items-center gap-2">
+                  <VscPreview className="text-2xl" />
+                  My Reviews
+                </p>
               </li>
-              <li>
-                <span className="font-medium text-gray-700 dark:text-white font-roboto">
-                  Total Given reviews :{" "}
-                </span>
-                {userReviews?.length}
+              <li className="py-2 px-4 rounded-lg text-white flex flex-col items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 shadow-md hover:shadow-lg ">
+                <p className="text-2xl font-bold">
+                  {appliedScholarship?.length}
+                </p>
+                <p className="text-base font-semibold font-roboto flex items-center gap-2">
+                  <IoIosDocument className="text-2xl" />
+                  My Applications
+                </p>
               </li>
             </ul>
           </div>
