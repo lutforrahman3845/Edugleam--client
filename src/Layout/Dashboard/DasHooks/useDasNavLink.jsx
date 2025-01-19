@@ -10,6 +10,7 @@ import {
 import { TiDocumentText } from "react-icons/ti";
 import { IoAddCircleOutline } from "react-icons/io5";
 import { MdManageAccounts } from "react-icons/md";
+import { IoIosDocument } from "react-icons/io";
 
 const useDasNavLink = () => {
   const { user } = useAuth();
@@ -22,9 +23,9 @@ const useDasNavLink = () => {
           <NavLink
             to={"/dashboard/home"}
             className={({ isActive }) =>
-              `px-3 py-2 rounded-md font-roboto text-base  hover:bg-none ${
+              `px-3 py-2 rounded-md font-roboto text-base hover:bg-none ${
                 isActive
-                  ? "bg-blue-500 text-white hover:text-secondary dark:hover:text-white font-medium"
+                  ? "bg-blue-500 text-white hover:text-secondary dark:hover:text-white font-medium "
                   : "dark:text-gray-400 text-secondary hover:text-blue-900 "
               }`
             }
@@ -75,11 +76,6 @@ const useDasNavLink = () => {
         </li>
       )}
 
-
-
-
-
-
       {/* moderator */}
       {user && role === "moderator" && (
         <li>
@@ -122,6 +118,25 @@ const useDasNavLink = () => {
       {user && role === "moderator" && (
         <li>
           <NavLink
+            to={"/dashboard/manageAppliedScholarship"}
+            className={({ isActive }) =>
+              `px-3 py-2 rounded-md font-roboto text-base hover:bg-none ${
+                isActive
+                  ? "bg-blue-500 text-white hover:text-secondary dark:hover:text-white font-medium "
+                  : "dark:text-gray-400 text-secondary hover:text-blue-900 "
+              }`
+            }
+          >
+            <div className="flex items-center gap-1">
+              <IoIosDocument className="text-xl" />
+              All Applied Application
+            </div>
+          </NavLink>
+        </li>
+      )}
+      {user && role === "moderator" && (
+        <li>
+          <NavLink
             to={"/dashboard/allreviews"}
             className={({ isActive }) =>
               `px-3 py-2 rounded-md font-roboto text-base hover:bg-none ${
@@ -157,16 +172,6 @@ const useDasNavLink = () => {
           </NavLink>
         </li>
       )}
-
-
-
-
-
-
-
-
-
-
 
       {/* Admin */}
       {user && role === "admin" && (
@@ -222,6 +227,25 @@ const useDasNavLink = () => {
             <div className="flex items-center gap-1">
               <FaGraduationCap className="text-xl" />
               Manage Scholarships
+            </div>
+          </NavLink>
+        </li>
+      )}
+      {user && role === "admin" && (
+        <li>
+          <NavLink
+            to={"/dashboard/manageAppliedScholarship"}
+            className={({ isActive }) =>
+              `px-3 py-2 rounded-md font-roboto text-base hover:bg-none ${
+                isActive
+                  ? "bg-blue-500 text-white hover:text-secondary dark:hover:text-white font-medium "
+                  : "dark:text-gray-400 text-secondary hover:text-blue-900 "
+              }`
+            }
+          >
+            <div className="flex items-center gap-1">
+              <IoIosDocument className="text-xl" />
+              Manage Applied Application
             </div>
           </NavLink>
         </li>

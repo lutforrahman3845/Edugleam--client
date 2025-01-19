@@ -43,7 +43,7 @@ const EditApplication = ({ applicationEdit }) => {
       });
     },
     onError:(error)=>{
-      toast.error(`${error.response.data.message}`, {
+      toast.error(`${error.response?.data?.message }`, {
         position: "top-right",
         autoClose: 1000,
         hideProgressBar: false,

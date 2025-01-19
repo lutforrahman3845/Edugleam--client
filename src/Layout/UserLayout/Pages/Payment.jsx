@@ -95,6 +95,8 @@ const Payment = () => {
             serviceCharge = {scholarShipDetails?.serviceCharge}
             ScholarshipId={scholarShipDetails?._id}
             address={address}
+            applicationDeadline={scholarShipDetails?.applicationDeadline}
+            
             />
           </Elements>
         </div>

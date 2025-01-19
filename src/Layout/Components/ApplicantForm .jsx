@@ -14,6 +14,7 @@ const ApplicantForm = ({
   applicationFees,
   serviceCharge,
   address,
+  applicationDeadline,
 }) => {
   const axiosSecure = useAxiosSecure();
   const [appling, setApplying] = useState(false);
@@ -25,7 +26,6 @@ const ApplicantForm = ({
     reset,
     formState: { errors },
   } = useForm();
-
   const onSubmit = async (data) => {
     // Ensure all fields are filled
     if (
@@ -69,6 +69,7 @@ const ApplicantForm = ({
         serviceCharge: serviceCharge,
         address: address,
         scholarshipId: ScholarshipId,
+        applicationDeadline:applicationDeadline,
         submissionDate: new Date().toISOString(),
       };
 

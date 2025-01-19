@@ -53,7 +53,7 @@ const UserAppliedScholaership = () => {
         try {
           const res = await axiosSecure.delete(`/deleteApplication/${id}`);
           if (res.data.deletedCount > 0) {
-            appliedRefetch()
+            appliedRefetch();
             Swal.fire({
               title: "Deleted!",
               text: "Your application has been deleted.",
@@ -75,11 +75,11 @@ const UserAppliedScholaership = () => {
       }
     });
   };
-  const handleReview= (scholarship)=>{
-    document.getElementById('my_modal_5').showModal()
-    setApplicationReview(scholarship)
-  }
-  docTitle("My Applications | Dashboard")
+  const handleReview = (scholarship) => {
+    document.getElementById("my_modal_5").showModal();
+    setApplicationReview(scholarship);
+  };
+  docTitle("My Applications | Dashboard");
   if (loadingAppliedScholar) return <Loading></Loading>;
   return (
     <div className="bg-white dark:bg-secondary font-roboto rounded-md">
@@ -134,10 +134,11 @@ const UserAppliedScholaership = () => {
                           scholarship?.status === "completed" &&
                           "bg-green-400  rounded-full"
                         }
-                    ${
-                      scholarship?.status === "rejected" ||
-                      (!scholarship?.status && "bg-red-500  rounded-full")
-                    }
+                        ${
+                          appliedSchlr?.status === "rejected" &&
+                          "bg-red-500  rounded-full"
+                        }
+                        ${!appliedSchlr?.status && "bg-gray-700  rounded-full"}
                      `}
                       >
                         {scholarship?.status ? scholarship?.status : " pending"}
@@ -164,8 +165,9 @@ const UserAppliedScholaership = () => {
                     </td>
                     <td>
                       <button
-                      onClick={()=>handleReview(scholarship)}
-                       className="text-white bg-primary py-1 px-2 rounded-md">
+                        onClick={() => handleReview(scholarship)}
+                        className="text-white bg-primary py-1 px-2 rounded-md"
+                      >
                         Review
                       </button>
                     </td>
@@ -187,7 +189,7 @@ const UserAppliedScholaership = () => {
       {/* Edit Modal */}
       <EditApplication applicationEdit={applicationEdit} />
       {/* Review Modal */}
-      <GiveReview ReviewInfo = {applicationReview}/>
+      <GiveReview ReviewInfo={applicationReview} />
     </div>
   );
 };

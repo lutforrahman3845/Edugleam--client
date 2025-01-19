@@ -122,7 +122,7 @@ const ManageAllUsers = () => {
   docTitle("Manage user | Dashboard");
   if (usersLoading) return <Loading></Loading>;
   return (
-    <div className=" bg-white dark:bg-secondary">
+    <div className=" bg-white dark:bg-secondary rounded-md font-roboto">
       <h1 className="text-lg md:text-2xl font-semibold text-center pt-6 font-poppins ">
         {" "}
         All users

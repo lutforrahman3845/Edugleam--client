@@ -34,7 +34,7 @@ const ReviewModal = ({ ReviewInfo }) => {
       });
     },
     onError: (error) => {
-      toast.error(`${error.message}`, {
+      toast.error(`${error.response?.data?.message }`, {
         position: "top-right",
         autoClose: 1000,
         hideProgressBar: false,

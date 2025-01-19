@@ -43,7 +43,7 @@ const ModalDetaisForUser = ({ id, onClose }) => {
         </div>
 
         {/* Scholarship Details */}
-        <div className="text-gray-700 dark:text-gray-300 space-x-2 sm:space-y-3">
+        <div className="text-gray-700 dark:text-gray-300  sm:space-y-2">
           <p>
           <strong>Scholarship:</strong>{scholarshipCategory}
           </p>

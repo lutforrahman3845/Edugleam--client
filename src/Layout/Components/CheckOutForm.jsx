@@ -13,7 +13,8 @@ const CheckOutForm = ({
   ScholarshipId,
   applicationFees,
   serviceCharge,
-  address
+  address,
+  applicationDeadline
 }) => {
   const axiosSecure = useAxiosSecure();
   const [error, setError] = useState("");
@@ -133,6 +134,7 @@ const CheckOutForm = ({
           applicationFees={applicationFees}
           serviceCharge={serviceCharge}
           address={address}
+          applicationDeadline={applicationDeadline}
         />
         </div>
       )}

@@ -82,7 +82,7 @@ const MangeScholarship = () => {
               {/* head */}
               <thead>
                 <tr>
-                  <th></th>
+                  <th>No</th>
                   <th>Scholarship name</th>
                   <th>University Name</th>
                   <th>Subject Category </th>
