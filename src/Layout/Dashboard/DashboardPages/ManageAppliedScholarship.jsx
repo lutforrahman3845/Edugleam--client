@@ -56,7 +56,7 @@ const ManageAppliedScholarship = () => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, cancle it!",
+      confirmButtonText: "Yes, Update it!",
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
