@@ -25,7 +25,7 @@ const UserAppliedScholaership = () => {
   };
   const handleEdit = (scholarship) => {
     if (scholarship?.status) {
-      return toast.error("The application is processing,cann't edit now !", {
+      return toast.error(`The application is ${scholarship?.status},cann't edit now !`, {
         position: "top-right",
         autoClose: 1000,
         hideProgressBar: false,
