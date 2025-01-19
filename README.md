@@ -91,15 +91,11 @@ https://edugleam-57b57.firebaseapp.com/
         "swiper": "^11.2.1"
       },
 ```
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-repo/edugleam.git
-   ```
-2. Install dependencies:
+1. Install dependencies:
    ```bash
    npm install
    ```
-3. Set up environment variables (.env.local):
+2. Set up environment variables (.env.local):
     -- Firebase configuration
    ```
    VITE_(KEYS)
@@ -108,11 +104,11 @@ https://edugleam-57b57.firebaseapp.com/
    VITE_serverUrl
    VITE_STRIPE_PUBLIC_KEY
    ```
-5. Start the development server:
+3. Start the development server:
    ```bash
    npm run dev
    ```
-6. Access the application at `http://localhost:5173/`
+4. Access the application at `http://localhost:5173/`
 
 
 
