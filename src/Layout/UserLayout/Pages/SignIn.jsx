@@ -17,7 +17,14 @@ const SignIn = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [error, setError] = useState("");
-
+  const handelAdminCredentials = () => {
+    setUserEmail("admin@gmail.com");
+    setUserPassword("1234Aa!");
+  };
+  const handelModeratorCredentials = () => {
+    setUserEmail("moderator@gmail.com");
+    setUserPassword("1234Aa!");
+  };
   const handleLogIn = (e) => {
     e.preventDefault();
     const form = e.target;
