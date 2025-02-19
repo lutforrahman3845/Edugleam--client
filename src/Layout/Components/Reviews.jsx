@@ -4,7 +4,6 @@ import Loading from "./Loading";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
-import "swiper/css/pagination";
 import "swiper/css/navigation";
 import userIcon from "../../assets/photo.png";
 import ReactStars from "react-stars";
@@ -20,16 +19,16 @@ const Reviews = () => {
   });
   if (isLoading) return <Loading></Loading>;
   return (
-    <div className="py-8 md:py-14 lg:py-16  px-2 overflow-x-hidden font-roboto">
-      <h1 className="text-xl  lg:text-2xl  xl:text-3xl text-center font-poppins font-semibold">
+    <div className="pt-8 md:pt-14 lg:pt-16  px-2 overflow-x-hidden font-roboto container mx-auto">
+      <h2 className=" text-xl sm:text-2xl md:text-3xl font-bold text-center mb-4 text-primary font-poppins">
         Testimonial
-      </h1>
-      <p className="text-center text-gray-600 mb-6 max-w-4xl mx-auto">
-        
+      </h2>
+      <p className="text-center text-gray-600 dark:text-white mb-6 font-roboto max-w-xl mx-auto">
+        EduGleam made scholarship management effortless, ensuring a seamless and
+        efficient experience for students and administrators alike
       </p>
       <Swiper
         spaceBetween={30}
-        pagination={{ clickable: true }}
         navigation={true}
         modules={[Pagination, Navigation]}
         breakpoints={{
@@ -45,7 +44,7 @@ const Reviews = () => {
         }}
         className="w-full h-72 my-5 mx-10 mt-8"
       >
-        {reviews.slice(0, 8).map((review) => (
+        {reviews.map((review) => (
           <SwiperSlide
             key={review._id}
             className="border-2 border-indigo-400 p-4 rounded-lg "
@@ -68,7 +67,9 @@ const Reviews = () => {
                   />
                 )}
                 <div>
-                  <p className="text-lg font-semibold">{review?.reviewerName}</p>
+                  <p className="text-lg font-semibold">
+                    {review?.reviewerName}
+                  </p>
                   <p>{new Date(review?.date).toLocaleString()}</p>
                 </div>
               </div>
