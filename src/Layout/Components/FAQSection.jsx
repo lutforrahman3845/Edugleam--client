@@ -10,7 +10,7 @@ const FAQSection = () => {
         </p>
 
         <div className="max-w-7xl mx-auto space-y-2">
-          <div className="collapse bg-base-200">
+          <div className="collapse bg-base-200 dark:bg-gray-800">
             <input type="radio" name="my-accordion-1" defaultChecked />
             <div className="collapse-title text-lg lg:text-xl font-medium font-poppins">
               What is a scholarship?
@@ -23,7 +23,7 @@ const FAQSection = () => {
               </p>
             </div>
           </div>
-          <div className="collapse bg-base-200">
+          <div className="collapse bg-base-200 dark:bg-gray-800">
             <input type="radio" name="my-accordion-1" defaultChecked />
             <div className="collapse-title text-lg lg:text-xl font-medium font-poppins">
               How can I apply for scholarships?
@@ -37,7 +37,7 @@ const FAQSection = () => {
               </p>
             </div>
           </div>
-          <div className="collapse bg-base-200">
+          <div className="collapse bg-base-200 dark:bg-gray-800">
             <input type="radio" name="my-accordion-1" defaultChecked />
             <div className="collapse-title text-lg lg:text-xl font-medium font-poppins">
               Are scholarships only for college students?
@@ -50,7 +50,7 @@ const FAQSection = () => {
               </p>
             </div>
           </div>
-          <div className="collapse bg-base-200">
+          <div className="collapse bg-base-200 dark:bg-gray-800">
             <input type="radio" name="my-accordion-1" defaultChecked />
             <div className="collapse-title text-lg lg:text-xl font-medium font-poppins">
               Do I need to repay a scholarship?
@@ -63,7 +63,7 @@ const FAQSection = () => {
               </p>
             </div>
           </div>
-          <div className="collapse bg-base-200">
+          <div className="collapse bg-base-200 dark:bg-gray-800">
             <input type="radio" name="my-accordion-1" defaultChecked />
             <div className="collapse-title text-lg lg:text-xl font-medium font-poppins">
               Can international students apply for scholarships?

@@ -19,7 +19,7 @@ const Reviews = () => {
   });
   if (isLoading) return <Loading></Loading>;
   return (
-    <div className="pt-8 md:pt-14 lg:pt-16  px-2 overflow-x-hidden font-roboto container mx-auto">
+    <div className="pt-16 lg:pt-20  px-2 overflow-x-hidden font-roboto container mx-auto">
       <h2 className=" text-xl sm:text-2xl md:text-3xl font-bold text-center mb-4 text-primary font-poppins">
         Testimonial
       </h2>
@@ -47,7 +47,7 @@ const Reviews = () => {
         {reviews.map((review) => (
           <SwiperSlide
             key={review._id}
-            className="border-2 border-indigo-400 p-4 rounded-lg "
+            className="border-2 border-indigo-400 p-4 rounded-lg  dark:bg-gray-800"
           >
             {" "}
             <div>
