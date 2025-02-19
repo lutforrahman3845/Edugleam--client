@@ -15,7 +15,7 @@ const ScholarshipCard = ({ scholarship = []}) => {
   } = scholarship;
 
   return (
-    <div className="relative bg-white dark:bg-gray-900 shadow-lg p-6 rounded-xl border border-gray-200 dark:border-gray-700  hover:shadow-2xl hover:scale-[1.02] overflow-hidden group flex flex-col justify-between ">
+    <div className="relative bg-white dark:bg-gray-800 shadow-lg p-6 rounded-xl border border-gray-200 dark:border-gray-700  hover:shadow-2xl hover:scale-[1.02] overflow-hidden group flex flex-col justify-between ">
       <div className="flex items-center gap-3 mb-5">
         {/* University Logo */}
         <div className="w-12 h-12 rounded-full border border-pri bg-white flex items-center justify-center overflow-hidden shadow-md group-hover:scale-105">
