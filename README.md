@@ -3,6 +3,8 @@
 EduGleam is a Scholarship Management System that allows students to search for scholarships, filter opportunities based on their preferences, and apply seamlessly. The platform aims to provide an efficient and user-friendly experience for scholarship applications and management.
 ### Live URL 
 https://edugleam-57b57.firebaseapp.com/
+### server site repositories
+[https://edugleam-57b57.firebaseapp.com/](https://github.com/lutforrahman3845/Edugleam-server)
 
 ## Features
 - **Home Page**: Displays scholarship categories, featured scholarships, and blogs.

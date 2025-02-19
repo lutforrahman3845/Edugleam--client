@@ -17,7 +17,7 @@ const SignIn = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [error, setError] = useState("");
- 
+
   const handleLogIn = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -81,7 +81,18 @@ const SignIn = () => {
               Use the following credentials to sign in as an admin or moderator
             </p>
             <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 mt-1">
-              
+              <button
+                onClick={handelAdminCredentials}
+                className="py-2 px-3 bg-primary/70 text-white font-roboto font-normal rounded-md hover:bg-primary"
+              >
+                Admin credentials
+              </button>
+              <button
+                onClick={handelModeratorCredentials}
+                className="py-2 px-3 bg-primary/70 text-white font-roboto font-normal rounded-md hover:bg-primary"
+              >
+                Moderator credentials
+              </button>
             </div>
           </div>
 
