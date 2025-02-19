@@ -11,15 +11,18 @@ import docTitle from "../../../Hooks/Title";
 const SignIn = () => {
   const { singInUser, setUser, googleSignIn } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
+  const [userEmail, setUserEmail] = useState("");
+  const [userPassword, setUserPassword] = useState("");
 
   const location = useLocation();
   const navigate = useNavigate();
   const [error, setError] = useState("");
+ 
   const handleLogIn = (e) => {
     e.preventDefault();
     const form = e.target;
-    const email = form.email.value;
-    const password = form.password.value;
+    const email = userEmail || form.email.value;
+    const password = userPassword || form.password.value;
     setError("");
     singInUser(email, password)
       .then((result) => {
@@ -65,7 +68,7 @@ const SignIn = () => {
         setError(error.message);
       });
   };
-  docTitle("SignIn | EduGleam")
+  docTitle("SignIn | EduGleam");
   return (
     <div className="mx-2 font-roboto mt-10 sm:mt-16 md:mt-24 lg:mt-36">
       <div className="flex max-w-sm md:max-w-6xl mx-auto border dark:border-gray-700 rounded-lg">
@@ -74,6 +77,12 @@ const SignIn = () => {
             <h2 className="mt-4 text-center text-2xl/9 font-bold tracking-tight text-gray-800 dark:text-white font-poppins">
               Sign In to your account
             </h2>
+            <p className="mt-2 text-center text-sm/6 text-gray-500 dark:text-gray-300">
+              Use the following credentials to sign in as an admin or moderator
+            </p>
+            <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 mt-1">
+              
+            </div>
           </div>
 
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -90,6 +99,8 @@ const SignIn = () => {
                     id="email"
                     name="email"
                     type="email"
+                    value={userEmail}
+                    onChange={(e) => setUserEmail(e.target.value)}
                     placeholder="Enter your email"
                     required
                     autoComplete="email"
@@ -121,6 +132,8 @@ const SignIn = () => {
                     name="password"
                     type={showPassword ? "text" : "password"}
                     required
+                    value={userPassword}
+                    onChange={(e) => setUserPassword(e.target.value)}
                     placeholder="Enter your password"
                     autoComplete="current-password"
                     className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-primary sm:text-sm/6 relative"
