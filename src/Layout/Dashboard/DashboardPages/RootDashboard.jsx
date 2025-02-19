@@ -8,12 +8,13 @@ import {
 } from "react-icons/fa";
 import { ThemeContext } from "../../../Context/ThemeProvider";
 import logo from "../../../assets/logo.svg";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import useDasNavLink from "../DasHooks/useDasNavLink";
 
 const RootDashboard = () => {
   const dasLink = useDasNavLink();
   const { theme, toggleTheme } = useContext(ThemeContext);
+  const navigate = useNavigate();
   const handleCloseSidebar = () => {
     document.getElementById("my-drawer-2").checked = false;
   };
@@ -60,7 +61,7 @@ const RootDashboard = () => {
 
           {/* Main Content */}
           <div className="flex-1 px-3 py-6 ">
-            <Outlet/>
+            <Outlet />
           </div>
         </div>
         {/* side nabvar */}
@@ -69,7 +70,10 @@ const RootDashboard = () => {
           <div className="bg-base-300  dark:bg-secondary text-base-content min-h-full w-80 p-4">
             {/* Close Icon for Mobile/Tablet device */}
             <div className="flex justify-between items-center mb-4">
-              <div className="flex items-center gap-2">
+              <div
+                onClick={() => navigate("/")}
+                className="flex items-center gap-2 cursor-pointer"
+              >
                 <img src={logo} alt="logo" className="w-10" />
                 <h4 className="hidden sm:block text-xl font-poppins font-semibold text-primary dark:text-white">
                   EduGleam
